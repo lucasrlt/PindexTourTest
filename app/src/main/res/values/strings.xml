@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Pindex</string>
+
+    <!-- Mock activities names  -->
+    <string-array name="mock_activities_names">
+        <item>History Museum</item>
+        <item>Open Air Concert in La Chaux-de-Fonds</item>
+        <item>Street Parade Zurich 2025</item>
+        <item>History of Modern Arts and Design</item>
+        <item>Street Food Festival</item>
+        <item>Rock Concert</item>
+        <item>Discover Saint-Imier</item>
+        <item>Mont-Soleil Energy Tour</item>
+    </string-array>
+
 </resources>
