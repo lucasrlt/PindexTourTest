@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.pindex.main.R
+import com.pindex.main.decorators.MarginItemDecoration
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,6 +16,8 @@ class HomeActivity : AppCompatActivity() {
         val itemsList = Datasource(this).getItemsList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        recyclerView.addItemDecoration(MarginItemDecoration(
+                resources.getDimension(R.dimen.default_padding).toInt()))
         recyclerView.adapter = ItemAdapter(itemsList)
     }
 
