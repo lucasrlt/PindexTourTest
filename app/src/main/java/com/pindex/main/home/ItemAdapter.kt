@@ -10,12 +10,24 @@ import com.pindex.main.R
 class ItemAdapter(val itemList: Array<String>) :
         RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
+    // On item click function
+    // Not a good practice to open an activity from a view holder context
+    // Handled in the HomeActivity
+    var onItemClick: ((String) -> Unit)? = null
+
     // Describes an item view and its place within the RecyclerView
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itemNameTextView: TextView = itemView.findViewById(R.id.item_name)
 
         fun bind(word: String) {
             itemNameTextView.text = word
+        }
+
+        // Call the onItemClick function when an item is clicked
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(itemList[adapterPosition])
+            }
         }
     }
 
