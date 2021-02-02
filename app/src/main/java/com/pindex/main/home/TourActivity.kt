@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.pindex.main.R
+import com.pindex.main.ui.blocks.TextBlock
+import com.pindex.main.ui.blocks.TitleBlock
 
 class TourActivity : AppCompatActivity() {
 

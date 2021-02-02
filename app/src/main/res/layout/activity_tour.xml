@@ -21,31 +21,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <com.pindex.main.ui.blocks.BigHeader
+            <com.pindex.main.ui.blocks.BigHeaderBlock
                 android:id="@+id/tour_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="50sp"/>
+
+            <com.pindex.main.ui.blocks.TitleBlock
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp"
+                android:text="Titre #1"/>
+
+            <com.pindex.main.ui.blocks.TextBlock
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="50sp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/text_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="This is a title"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
                 android:text="Au fil des rues de la ville de Saint-Imier, vous découvrirez l'histoire passionnante de l'industrie horlogère ainsi que son impact sur la vie de la localité."
-                android:textColor="@color/black"
-                android:textSize="11sp" />
+                />
+
+            <com.pindex.main.ui.blocks.TitleBlock
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15sp"
+                android:text="Titre #2"/>
+
+            <com.pindex.main.ui.blocks.TextBlock
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50sp"
+                android:text="Au fil des rues de la ville de Saint-Imier, vous découvrirez l'histoire passionnante de l'industrie horlogère ainsi que son impact sur la vie de la localité."
+                />
 
         </LinearLayout>
 
