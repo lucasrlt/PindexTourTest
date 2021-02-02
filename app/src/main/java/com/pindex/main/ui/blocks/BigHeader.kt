@@ -3,6 +3,8 @@ package com.pindex.main.ui.blocks
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
 import com.pindex.main.R
