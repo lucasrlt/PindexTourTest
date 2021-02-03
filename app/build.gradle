@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'  // Google Services plugin
 }
 
 android {
@@ -9,12 +10,15 @@ android {
 
     defaultConfig {
         applicationId "com.pindex.main"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // To avoid compilation errors due to the DEX limitations
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -29,6 +33,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -45,4 +52,37 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2' // for ActivityScenarioRule
+
+    // To avoid compilation errors due to the DEX limitations
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // Import the Firebase BoM (automatically pulls the below libraries with the right versions)
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    // Import Firebase authentification
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    // Import Cloud Firestore Android library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // Coroutines support for Firebase operations
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
+    // Paging
+    def paging_version = "3.0.0-alpha12"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:$paging_version"
+    // optional - RxJava2 support
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    // optional - RxJava3 support
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
+    // optional - Guava ListenableFuture support
+    implementation "androidx.paging:paging-guava:$paging_version"
+    // Jetpack Compose Integration
+    implementation "androidx.paging:paging-compose:1.0.0-alpha05"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 }
