@@ -1,7 +1,6 @@
 package com.pindex.main.ui.blocks
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
