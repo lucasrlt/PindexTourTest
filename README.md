@@ -1,6 +1,7 @@
 <p align="center"><a href="https://pindex.ch" target="_blank"><img src="https://user-images.githubusercontent.com/26303997/101986158-9c483d00-3c8c-11eb-8ba2-6e81df27686b.png" width="400"></a></p>
 
 <p align="center">
+<a href="https://codeclimate.com/github/pindex/android/maintainability"><img src="https://api.codeclimate.com/v1/badges/85142c769e228a072fdb/maintainability"alt="Maintainability"/></a>
 <!--<a href=#><img src=# alt="Build Status"></a>-->
 <!--<a href=#><img src=# alt="Coverage"></a>-->
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License"></a>
