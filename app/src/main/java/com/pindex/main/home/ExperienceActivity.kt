@@ -6,11 +6,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.pindex.main.R
 
-class TourActivity : AppCompatActivity() {
+class ExperienceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tour)
+        setContentView(R.layout.activity_experience)
 
         // Set the title
         val titleView = findViewById<TextView>(R.id.tour_title)
@@ -18,9 +18,11 @@ class TourActivity : AppCompatActivity() {
 
         // Do not display the title when there is none
         if (title?.isBlank()!!) {
+            titleView.text = ""
             titleView.visibility = View.GONE
         } else {
             titleView.text = title
+            titleView.visibility = View.VISIBLE
         }
     }
 

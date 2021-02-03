@@ -1,12 +1,11 @@
 package com.pindex.main.home
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.pindex.main.R
 import com.pindex.main.decorators.MarginItemDecoration
+import com.pindex.main.R
 
 class HomeActivity : AppCompatActivity() {
 
@@ -24,7 +23,9 @@ class HomeActivity : AppCompatActivity() {
         setRecyclerViewOnItemClick()
     }
 
-    // Setup the main activity data
+    /**
+     * Setup the main activity data.
+     */
     private fun setupData() {
         // Get fake data from a XML file
         itemsList = Datasource(this).getItemsList()
@@ -39,10 +40,12 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-    // Set the on click event to the recycler view items
+    /**
+     * Set the on click event to the recycler view items.
+     */
     private fun setRecyclerViewOnItemClick() {
         adapter.onItemClick = { word ->
-            val intent = Intent(this, TourActivity::class.java)
+            val intent = Intent(this, ExperienceActivity::class.java)
             intent.putExtra("title", word)
 
             // Display the tour activity
