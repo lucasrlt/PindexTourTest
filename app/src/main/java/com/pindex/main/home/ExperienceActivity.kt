@@ -1,10 +1,12 @@
 package com.pindex.main.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.pindex.main.R
+import com.pindex.main.models.ExperienceDto
 
 class ExperienceActivity : AppCompatActivity() {
 
@@ -12,6 +14,9 @@ class ExperienceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_experience)
 
+        val experience: ExperienceDto? = intent.getParcelableExtra("EXPERIENCE")
+
+        /*
         // Set the title
         val titleView = findViewById<TextView>(R.id.tour_title)
         val title = intent.getStringExtra("title")
@@ -24,6 +29,8 @@ class ExperienceActivity : AppCompatActivity() {
             titleView.text = title
             titleView.visibility = View.VISIBLE
         }
+
+         */
     }
 
 }

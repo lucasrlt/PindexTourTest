@@ -1,5 +1,9 @@
 package com.pindex.main.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ContentDto(
         var id: String? = null,
         var blocksWrapper: BlocksWrapperDto? = null,
@@ -7,4 +11,4 @@ data class ContentDto(
         var lang: String? = null,
         var shortDescription: String? = null,
         var title: String? = null
-)
+)  : Parcelable
