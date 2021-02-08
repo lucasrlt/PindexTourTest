@@ -8,6 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Copy google-services.json
-      run:  cp ./app/google-services.example.json google-services.json
+      run:  cp ./app/google-services.example.json ./app/google-services.json
     - name: Build with Gradle
       run: ./gradlew build
