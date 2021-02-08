@@ -67,6 +67,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     // Import Cloud Firestore Android library
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    // Import Firebase Storage library
+    implementation 'com.google.firebase:firebase-storage-ktx:19.2.1'
 
     // Coroutines support for Firebase operations
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
@@ -90,4 +92,7 @@ dependencies {
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    // Glide (Media Manager)
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }

@@ -9,6 +9,7 @@ import com.pindex.main.R
 import com.pindex.main.models.BlockDto
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.ui.blocks.BigHeaderBlock
+import com.pindex.main.ui.blocks.BorderlessImageBlock
 import com.pindex.main.ui.blocks.SectionTitleBlock
 import com.pindex.main.ui.blocks.TextBlock
 
@@ -64,6 +65,11 @@ class ExperienceActivity : AppCompatActivity() {
             "bigHeader" -> {
                 widget = BigHeaderBlock(this)
                 widget.text = block.text?.text
+                params.setMargins(0,0,0,50)
+            }
+            "borderlessImage" -> {
+                widget = BorderlessImageBlock(this)
+                widget.loadImage(block.image?.imagePath.toString())
                 params.setMargins(0,0,0,50)
             }
             "text" -> {
