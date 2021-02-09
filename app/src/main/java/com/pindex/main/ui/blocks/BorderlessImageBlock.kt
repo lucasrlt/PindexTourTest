@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import com.pindex.main.utils.Converter
 
 class BorderlessImageBlock @JvmOverloads constructor(
         context: Context,
@@ -20,10 +21,8 @@ class BorderlessImageBlock @JvmOverloads constructor(
     init {
         adjustViewBounds = true
 
-        // dp to pixels formula
-        val scale: Float = context.resources.displayMetrics.density
-        val pixels: Int = (500 * scale + 0.5f).toInt()
-        maxHeight = pixels
+        // dp to pixels
+        maxHeight = Converter.dpToPixels(500, context)
     }
 
     fun loadImage(imagePath: String) {
