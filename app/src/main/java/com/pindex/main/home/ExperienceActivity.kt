@@ -15,6 +15,8 @@ import com.pindex.main.ui.blocks.TextBlock
 
 class ExperienceActivity : AppCompatActivity() {
 
+    private val MARGIN_X = 50
+
     private lateinit var layout: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +56,7 @@ class ExperienceActivity : AppCompatActivity() {
             sectionTitleBlock.text = block.sectionTitle
 
             // Set the margins
-            params.setMargins(0,0,0,15)
+            params.setMargins(MARGIN_X,0,MARGIN_X,15)
             sectionTitleBlock.layoutParams = params
 
             // Add the Section Title widget to the root layout
@@ -65,7 +67,7 @@ class ExperienceActivity : AppCompatActivity() {
             "bigHeader" -> {
                 widget = BigHeaderBlock(this)
                 widget.text = block.text?.text
-                params.setMargins(0,0,0,50)
+                params.setMargins(MARGIN_X,0,MARGIN_X,50)
             }
             "borderlessImage" -> {
                 widget = BorderlessImageBlock(this)
@@ -75,7 +77,7 @@ class ExperienceActivity : AppCompatActivity() {
             "text" -> {
                 widget = TextBlock(this)
                 widget.text = block.text?.text
-                params.setMargins(0,0,0,50)
+                params.setMargins(MARGIN_X,0,MARGIN_X,50)
             }
         }
 
