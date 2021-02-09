@@ -12,6 +12,7 @@ import com.pindex.main.ui.blocks.BigHeaderBlock
 import com.pindex.main.ui.blocks.BorderlessImageBlock
 import com.pindex.main.ui.blocks.SectionTitleBlock
 import com.pindex.main.ui.blocks.TextBlock
+import com.pindex.main.utils.MediaLoader
 
 class ExperienceActivity : AppCompatActivity() {
 
@@ -71,7 +72,7 @@ class ExperienceActivity : AppCompatActivity() {
             }
             "borderlessImage" -> {
                 widget = BorderlessImageBlock(this)
-                widget.loadImage(block.image?.imagePath.toString())
+                MediaLoader.loadImage(block.image?.imagePath.toString(), widget)
                 params.setMargins(0,0,0,50)
             }
             "text" -> {
