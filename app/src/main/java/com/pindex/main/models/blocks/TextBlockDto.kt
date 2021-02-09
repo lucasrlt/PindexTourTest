@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ImageBlock(
-        var imageDescription: String? = null,
-        var imagePath: String? = null,
+data class TextBlockDto(
+    var text: String? = null,
+    var expandedOnly: Boolean? = null,
 )  : Parcelable

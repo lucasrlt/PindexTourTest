@@ -4,7 +4,6 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TextBlock(
-    var text: String? = null,
-    var expandedOnly: Boolean? = null,
-)  : Parcelable
+data class AudioBlockDto(
+    var audioPath: String? = null,
+) : Parcelable
