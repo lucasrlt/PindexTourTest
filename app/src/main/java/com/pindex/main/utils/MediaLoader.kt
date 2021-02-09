@@ -1,5 +1,6 @@
 package com.pindex.main.utils
 
+import android.content.Context
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
@@ -14,9 +15,8 @@ object MediaLoader {
 
     /**
      * Load the image from the given [imagePath] and add it to the given [view].
-     * The image desired [width] and [height] can be passed and are 1920/1080 by default.
      */
-    fun loadImage(imagePath: String, view: AppCompatImageView, width: Int = 1920, height: Int = 1080) {
+    fun loadImage(imagePath: String, view: AppCompatImageView) {
         // Get the image storage path from Firebase
         val imageRef: StorageReference = Firebase.storage.reference.child(imagePath)
 
@@ -27,8 +27,6 @@ object MediaLoader {
             // Load the image and add it to the view
             Glide.with(view)
                     .load(imageURL)
-                    // Resize
-                    .override(width, height)
                     .centerCrop()
                     .into(view)
         }
