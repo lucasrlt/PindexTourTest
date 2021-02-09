@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeActivity">
 
+    <Button
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AUDIO" />
+
     <fragment
         android:id="@+id/fragment_experience"
         android:name="com.pindex.main.ui.fragments.ExperienceFragment"
