@@ -27,18 +27,20 @@ class ExperiencePagingSource(
         return try {
             // Current chunk of experiences to fetch
             val currentPage = params.key ?: db.collection(FIRESTORE_COLLECTION)
-                .limit(QUERY_LIMIT)
-                .get()
-                .await()
+                    .whereEqualTo("status", "listed")
+                    .limit(QUERY_LIMIT)
+                    .get()
+                    .await()
 
             val lastDocumentSnapshot = currentPage.documents[currentPage.size() - 1]
 
             // Next chunk of experiences to fetch
             val nextPage = db.collection(FIRESTORE_COLLECTION)
-                .limit(QUERY_LIMIT)
-                .startAfter(lastDocumentSnapshot)
-                .get()
-                .await()
+                    .whereEqualTo("status", "listed")
+                    .limit(QUERY_LIMIT)
+                    .startAfter(lastDocumentSnapshot)
+                    .get()
+                    .await()
 
             LoadResult.Page(
                 data = currentPage.toObjects(ExperienceDto::class.java),
