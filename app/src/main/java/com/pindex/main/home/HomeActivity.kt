@@ -1,55 +1,45 @@
 package com.pindex.main.home
 
-import android.content.Intent
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.pindex.main.decorators.MarginItemDecoration
 import com.pindex.main.R
+import com.pindex.main.auth.PindexFirebase
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var itemsList: Array<String>
-    private lateinit var adapter: ItemAdapter
-    private lateinit var recyclerView: RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupData()
+        // Anonymously log in the user to Firebase
+        PindexFirebase.signInAnonymously(this)
 
-        setRecyclerViewOnItemClick()
-    }
 
-    /**
-     * Setup the main activity data.
-     */
-    private fun setupData() {
-        // Get fake data from a XML file
-        itemsList = Datasource(this).getItemsList()
 
-        // Create the adapter
-        adapter = ItemAdapter(itemsList)
+        // Test audio
 
-        // Find the recycler view and bind it to the adapter
-        recyclerView = findViewById(R.id.recycler_view)
-        recyclerView.addItemDecoration(MarginItemDecoration(
-                resources.getDimension(R.dimen.default_padding).toInt()))
-        recyclerView.adapter = adapter
-    }
+        val playerBtn = findViewById<Button>(R.id.player)
+        playerBtn.setOnClickListener {
+            /*
+            var mediaPlayer = MediaPlayer.create(this, R.raw.acid)
+            mediaPlayer.start()
+            */
 
-    /**
-     * Set the on click event to the recycler view items.
-     */
-    private fun setRecyclerViewOnItemClick() {
-        adapter.onItemClick = { word ->
-            val intent = Intent(this, ExperienceActivity::class.java)
-            intent.putExtra("title", word)
-
-            // Display the tour activity
-            startActivity(intent)
+            val url = "https://safmarket.srvz-webapp.he-arc.ch/api/sample/file/1/0"
+            val mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .build()
+                )
+                setDataSource((url))
+                prepare()
+                start()
+            }
         }
     }
 

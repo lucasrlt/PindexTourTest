@@ -23,7 +23,7 @@ class BigHeaderBlock @JvmOverloads constructor(
         typeface = ResourcesCompat.getFont(context, R.font.montserrat_bold)
 
         // Font size
-        textSize = 40f
+        textSize = 36f
 
         // Font color
         setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_lead, null))
