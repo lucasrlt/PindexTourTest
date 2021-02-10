@@ -1,7 +1,6 @@
 package com.pindex.main.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +8,17 @@ import com.pindex.main.R
 import com.pindex.main.models.BlockDto
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.ui.blocks.BigHeaderBlock
+import com.pindex.main.ui.blocks.BorderlessImageBlock
 import com.pindex.main.ui.blocks.SectionTitleBlock
 import com.pindex.main.ui.blocks.TextBlock
+import com.pindex.main.utils.Converter
+import com.pindex.main.utils.MediaLoader
 
 class ExperienceActivity : AppCompatActivity() {
+
+    private val MARGIN_X = 50
+
+    private val BORDERLESS_IMAGE_HEIGHT = 250
 
     private lateinit var layout: LinearLayout
 
@@ -53,7 +59,7 @@ class ExperienceActivity : AppCompatActivity() {
             sectionTitleBlock.text = block.sectionTitle
 
             // Set the margins
-            params.setMargins(0,0,0,15)
+            params.setMargins(MARGIN_X,0,MARGIN_X,15)
             sectionTitleBlock.layoutParams = params
 
             // Add the Section Title widget to the root layout
@@ -64,12 +70,19 @@ class ExperienceActivity : AppCompatActivity() {
             "bigHeader" -> {
                 widget = BigHeaderBlock(this)
                 widget.text = block.text?.text
+                params.setMargins(MARGIN_X,0,MARGIN_X,50)
+            }
+            "borderlessImage" -> {
+                widget = BorderlessImageBlock(this)
+                MediaLoader.loadImage(block.image?.imagePath.toString(), widget)
+                // Set the image height here in order to display its background colour
+                params.height = Converter.dpToPixels(BORDERLESS_IMAGE_HEIGHT, this)
                 params.setMargins(0,0,0,50)
             }
             "text" -> {
                 widget = TextBlock(this)
                 widget.text = block.text?.text
-                params.setMargins(0,0,0,50)
+                params.setMargins(MARGIN_X,0,MARGIN_X,50)
             }
         }
 
