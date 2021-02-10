@@ -25,7 +25,7 @@ class SectionTitleBlock @JvmOverloads constructor(
         // Font size
         textSize = 26f
 
-        // Font color
+        // Font colour
         setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_lead, null))
     }
 

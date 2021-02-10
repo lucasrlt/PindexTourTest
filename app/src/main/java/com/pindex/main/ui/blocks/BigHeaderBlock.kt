@@ -25,7 +25,7 @@ class BigHeaderBlock @JvmOverloads constructor(
         // Font size
         textSize = 36f
 
-        // Font color
+        // Font colour
         setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_lead, null))
     }
 

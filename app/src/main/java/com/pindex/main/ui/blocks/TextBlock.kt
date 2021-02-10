@@ -25,7 +25,7 @@ class TextBlock @JvmOverloads constructor(
         // Font size
         textSize = 17f
 
-        // Font color
+        // Font colour
         setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_text, null))
     }
 
