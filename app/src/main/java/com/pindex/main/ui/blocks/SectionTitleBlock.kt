@@ -23,7 +23,7 @@ class SectionTitleBlock @JvmOverloads constructor(
         typeface = ResourcesCompat.getFont(context, R.font.montserrat_bold)
 
         // Font size
-        textSize = 30f
+        textSize = 26f
 
         // Font color
         setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_lead, null))
