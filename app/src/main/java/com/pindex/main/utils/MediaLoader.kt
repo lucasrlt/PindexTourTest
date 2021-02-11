@@ -1,6 +1,7 @@
 package com.pindex.main.utils
 
 import android.content.Context
+import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
@@ -13,22 +14,29 @@ import com.google.firebase.storage.ktx.storage
  */
 object MediaLoader {
 
-    /**
-     * Load the image from the given [imagePath] and add it to the given [view].
+    /** Load the image at the given [imageURL] and add it to the given [view].
      */
-    fun loadImage(imagePath: String, view: AppCompatImageView) {
+    fun loadImageFromURL(imageURL: String, view: AppCompatImageView) {
+        Glide.with(view)
+                .load(imageURL)
+                .centerCrop()
+                .into(view)
+    }
+
+    /**
+     * Load the image from Firebase associated to the given [imagePath] and
+     * add it to the given [view].
+     */
+    fun loadImageFromFirebase(imagePath: String, view: AppCompatImageView) {
         // Get the image storage path from Firebase
         val imageRef: StorageReference = Firebase.storage.reference.child(imagePath)
 
         imageRef.downloadUrl.addOnSuccessListener { Uri ->
 
+            // The image URL from Firebase
             val imageURL: String = Uri.toString()
 
-            // Load the image and add it to the view
-            Glide.with(view)
-                    .load(imageURL)
-                    .centerCrop()
-                    .into(view)
+            loadImageFromURL(imageURL, view)
         }
     }
 

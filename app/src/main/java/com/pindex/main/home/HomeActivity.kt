@@ -1,5 +1,7 @@
 package com.pindex.main.home
 
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -17,16 +19,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Anonymously log in the user to Firebase
-        PindexFirebase.signInAnonymously(this)
+        //PindexFirebase.signInAnonymously(this)
 
 
 
         // Test audio
 
-
         val audio: AudioBlockDto = AudioBlockDto(
                 "https://safmarket.srvz-webapp.he-arc.ch/api/sample/file/1/0",
-                "",
+                "tours/TOUR_FORMAT/V.REBETEZ.jpeg",
                 "Name",
                 "sectionTitle"
         )
@@ -36,35 +37,15 @@ class HomeActivity : AppCompatActivity() {
                 Converter.dpToPixels(60, this),
         )
 
-        var audioBlock: AudioBlock = AudioBlock(this)
+        var audioBlock: AudioBlock = AudioBlock(audio.name, audio.audioPath, audio.imagePath, this)
         audioBlock.layoutParams = params
 
         findViewById<FrameLayout>(R.id.home_view).addView(audioBlock)
 
+        audioBlock = AudioBlock(audio.name, audio.audioPath, audio.imagePath, this)
+        audioBlock.layoutParams = params
 
-
-        /*
-        val playerBtn = findViewById<Button>(R.id.player)
-        playerBtn.setOnClickListener {
-            /*
-            var mediaPlayer = MediaPlayer.create(this, R.raw.acid)
-            mediaPlayer.start()
-            */
-
-            val url = "https://safmarket.srvz-webapp.he-arc.ch/api/sample/file/1/0"
-            val mediaPlayer = MediaPlayer().apply {
-                setAudioAttributes(
-                    AudioAttributes.Builder()
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .build()
-                )
-                setDataSource((url))
-                prepare()
-                start()
-            }
-        }
-         */
+        findViewById<FrameLayout>(R.id.home_view).addView(audioBlock)
     }
 
 }

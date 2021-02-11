@@ -74,7 +74,7 @@ class ExperienceActivity : AppCompatActivity() {
             }
             "borderlessImage" -> {
                 widget = BorderlessImageBlock(this)
-                MediaLoader.loadImage(block.image?.imagePath.toString(), widget)
+                MediaLoader.loadImageFromFirebase(block.image?.imagePath.toString(), widget)
                 // Set the image height here in order to display its background colour
                 params.height = Converter.dpToPixels(BORDERLESS_IMAGE_HEIGHT, this)
                 params.setMargins(0,0,0,50)
