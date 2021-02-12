@@ -29,6 +29,9 @@ class AudioBlock @JvmOverloads constructor(
     // Button (icon + text)
     private val buttonView: AppCompatButton
 
+    // Audio player
+    private var mediaPlayer: MediaPlayer? = null
+
     /**
      * Setup this View components.
      */
@@ -43,23 +46,85 @@ class AudioBlock @JvmOverloads constructor(
         MediaLoader.loadImageFromFirebase(imagePath!!, imageView)
 
         // Set the audio text
-        buttonView.text = audioName
+        setAudioText(audioName)
 
         // Set the button on click event
         buttonView.setOnClickListener {
-            // Play the audio file
-            val mediaPlayer = MediaPlayer().apply {
-                setAudioAttributes(
-                        AudioAttributes.Builder()
-                                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                                .setUsage(AudioAttributes.USAGE_MEDIA)
-                                .build()
-                )
-                setDataSource(audioPath)
-                prepare()
-                start()
+
+            // First click: setup the media player
+            if (mediaPlayer == null) {
+
+                // Display the loading text
+                setAudioText(resources.getString(R.string.loading))
+
+                mediaPlayer = MediaPlayer().apply {
+
+                    // When the audio file is ready
+                    setOnPreparedListener {
+                        setPauseIcon()
+                        // Display the audio name back
+                        setAudioText(audioName)
+
+                        start()
+                    }
+
+                    // When the audio file ends
+                    setOnCompletionListener {
+                        setPlayIcon()
+                    }
+
+                    // Setup the audio player
+                    setAudioAttributes(
+                            AudioAttributes.Builder()
+                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                                    .build()
+                    )
+
+                    // Audio file URL
+                    setDataSource(audioPath)
+
+                    // To avoid blocking the UI: MediaPlayer.OnPreparedListener is called when ready
+                    prepareAsync()
+                }
+            }
+            // Media Player already setup: play/pause
+            else {
+                // Pause
+                if (mediaPlayer!!.isPlaying) {
+                    setPlayIcon()
+                    mediaPlayer!!.pause()
+                }
+                // Play
+                else {
+                    setPauseIcon()
+                    mediaPlayer!!.start()
+                }
             }
         }
+    }
+
+    /**
+     * Display the given [text] in the component.
+     */
+    private fun setAudioText(text: String?) {
+        buttonView.text = text
+    }
+
+    /**
+     * Display the play icon in the component.
+     */
+    private fun setPlayIcon() {
+        val icon = R.drawable.ic_baseline_play_arrow
+        buttonView.setCompoundDrawablesWithIntrinsicBounds(icon, 0, 0, 0)
+    }
+
+    /**
+     * Display the pause icon in the component.
+     */
+    private fun setPauseIcon() {
+        val icon = R.drawable.ic_baseline_pause
+        buttonView.setCompoundDrawablesWithIntrinsicBounds(icon, 0, 0, 0)
     }
 
 }
