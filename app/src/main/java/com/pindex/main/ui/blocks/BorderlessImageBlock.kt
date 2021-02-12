@@ -3,10 +3,8 @@ package com.pindex.main.ui.blocks
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.res.ResourcesCompat
 import com.pindex.main.R
-import com.pindex.main.utils.Converter
 
 /**
  * Custom ImageView for the Borderless Image block.

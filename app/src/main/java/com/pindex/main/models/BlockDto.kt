@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class BlockDto(
-        var audios: ArrayList<AudioBlockDto>? = null,
+        var audio: AudioBlockDto? = null,
         var image: ImageBlockDto? = null,
         var sectionTitle: String? = null,
         var text: TextBlockDto? = null,

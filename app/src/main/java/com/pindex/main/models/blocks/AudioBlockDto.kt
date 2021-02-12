@@ -8,5 +8,4 @@ data class AudioBlockDto(
     var audioPath: String? = null,
     var imagePath: String? = null,
     var name: String? = null,
-    var sectionTitle: String? = null,
 ) : Parcelable

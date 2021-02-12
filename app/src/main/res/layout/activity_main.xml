@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeActivity">
 
-    <!--fragment
+    <fragment
         android:id="@+id/fragment_experience"
         android:name="com.pindex.main.ui.fragments.ExperienceFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_experience"/-->
+        tools:layout="@layout/fragment_experience"/>
 
 </FrameLayout>
