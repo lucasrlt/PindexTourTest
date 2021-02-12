@@ -10,6 +10,7 @@ import com.pindex.main.R
  * Custom TextView for the Big Header block.
  */
 class BigHeaderBlock @JvmOverloads constructor(
+        title: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
@@ -19,6 +20,9 @@ class BigHeaderBlock @JvmOverloads constructor(
      * Apply the Big Header block styles to this TextView.
      */
     init {
+        // Set the text
+        text = title
+
         // Font family
         typeface = ResourcesCompat.getFont(context, R.font.montserrat_bold)
 

@@ -10,6 +10,7 @@ import com.pindex.main.R
  * Custom TextView for the Text block.
  */
 class TextBlock @JvmOverloads constructor(
+        content: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
@@ -19,6 +20,9 @@ class TextBlock @JvmOverloads constructor(
      * Apply the Text block styles to this TextView.
      */
     init {
+        // Set the text
+        text = content
+
         // Font family
         typeface = ResourcesCompat.getFont(context, R.font.montserrat_semibold)
 
