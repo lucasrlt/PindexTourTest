@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.blocks.AudioBlock">
+
+    <!-- CardView is useful to apply a border radius and an elevation -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp"
+        android:elevation="10dp">
+
+        <!-- Background image -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/audio_block_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="@color/semi_black_overlay"/>
+
+        <!-- Icon + text -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/audio_block_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="left|center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_play_arrow"
+            android:drawablePadding="5dp"
+            iconGravity="textStart"/>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

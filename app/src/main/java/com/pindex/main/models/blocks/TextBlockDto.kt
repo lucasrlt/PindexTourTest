@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TextBlock(
+data class TextBlockDto(
     var text: String? = null,
     var expandedOnly: Boolean? = null,
 )  : Parcelable

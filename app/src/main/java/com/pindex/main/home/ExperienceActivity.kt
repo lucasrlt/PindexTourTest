@@ -7,16 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pindex.main.R
 import com.pindex.main.models.BlockDto
 import com.pindex.main.models.ExperienceDto
-import com.pindex.main.ui.blocks.BigHeaderBlock
-import com.pindex.main.ui.blocks.BorderlessImageBlock
-import com.pindex.main.ui.blocks.SectionTitleBlock
-import com.pindex.main.ui.blocks.TextBlock
+import com.pindex.main.ui.blocks.*
 import com.pindex.main.utils.Converter
-import com.pindex.main.utils.MediaLoader
 
 class ExperienceActivity : AppCompatActivity() {
 
-    private val MARGIN_X = 50
+    private val MARGIN_X = 60
 
     private val BORDERLESS_IMAGE_HEIGHT = 250
 
@@ -44,7 +40,7 @@ class ExperienceActivity : AppCompatActivity() {
      * content and then add it to the activity root layout.
      */
     private fun createBlockWidget(block: BlockDto) {
-        var widget: View? = null
+        var view: View? = null
 
         // Margins are used by the layout ; that is why they are set here
         var params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
@@ -67,30 +63,31 @@ class ExperienceActivity : AppCompatActivity() {
         }
 
         when (block.type) {
+            "audio" -> {
+                view = AudioBlock(block.audio?.audioPath, block.audio?.imagePath, block.audio?.name, this)
+                params.setMargins(MARGIN_X,0,MARGIN_X,50)
+            }
             "bigHeader" -> {
-                widget = BigHeaderBlock(this)
-                widget.text = block.text?.text
+                view = BigHeaderBlock(block.text?.text, this)
                 params.setMargins(MARGIN_X,0,MARGIN_X,50)
             }
             "borderlessImage" -> {
-                widget = BorderlessImageBlock(this)
-                MediaLoader.loadImage(block.image?.imagePath.toString(), widget)
+                view = BorderlessImageBlock(block.image?.imagePath, this)
                 // Set the image height here in order to display its background colour
                 params.height = Converter.dpToPixels(BORDERLESS_IMAGE_HEIGHT, this)
                 params.setMargins(0,0,0,50)
             }
             "text" -> {
-                widget = TextBlock(this)
-                widget.text = block.text?.text
+                view = TextBlock(block.text?.text, this)
                 params.setMargins(MARGIN_X,0,MARGIN_X,50)
             }
         }
 
-        widget?.layoutParams = params
+        view?.layoutParams = params
 
         // Not every block is implemented yet
-        if (widget != null) {
-            layout.addView(widget)
+        if (view != null) {
+            layout.addView(view)
         }
     }
 
