@@ -36,14 +36,14 @@ object Constants {
     const val BLOCK_BORDERLESS_IMAGE_MARGIN_BOTTOM: Int = 50
 
     /**
-     * The Text block margin bottom.
-     */
-    const val BLOCK_TEXT_MARGIN_BOTTOM: Int = 50
-
-    /**
      * The Section Title block margin bottom.
      */
     const val BLOCK_SECTION_TITLE_MARGIN_BOTTOM: Int = 15
+
+    /**
+     * The Text block margin bottom.
+     */
+    const val BLOCK_TEXT_MARGIN_BOTTOM: Int = 50
 
     /**
      * The experiences collection name in Firestore.

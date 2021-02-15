@@ -53,9 +53,7 @@ class ExperienceActivity : AppCompatActivity() {
 
         // Create and add a Section Title when the block has a sectionTitle property
         if (block.sectionTitle != null) {
-            var sectionTitleBlock: SectionTitleBlock = SectionTitleBlock(this)
-
-            sectionTitleBlock.text = block.sectionTitle
+            var sectionTitleBlock: SectionTitleBlock = SectionTitleBlock(block.sectionTitle, this)
 
             // Set the margins
             params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_SECTION_TITLE_MARGIN_BOTTOM)
