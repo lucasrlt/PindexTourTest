@@ -8,13 +8,16 @@ import com.pindex.main.R
 import com.pindex.main.models.BlockDto
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.ui.blocks.*
+import com.pindex.main.utils.Constants
 import com.pindex.main.utils.Converter
 
 class ExperienceActivity : AppCompatActivity() {
 
-    private val MARGIN_X = 60
-
-    private val BORDERLESS_IMAGE_HEIGHT = 250
+    /**
+     * Horizontal margin for this activity content ; declared here
+     * because used multiple times.
+     */
+    private val contentMarginX: Int = Constants.ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X
 
     private lateinit var layout: LinearLayout
 
@@ -24,7 +27,7 @@ class ExperienceActivity : AppCompatActivity() {
 
         layout = findViewById<LinearLayout>(R.id.experience_root_layout)
 
-        val experience: ExperienceDto? = intent.getParcelableExtra("EXPERIENCE")
+        val experience: ExperienceDto? = intent.getParcelableExtra(Constants.ACTIVITY_EXPERIENCE_EXTRA_NAME)
 
         // Get the experience Pindex blocks
         val blocks: ArrayList<BlockDto>? = experience?.content?.get(0)?.blocksWrapper?.blocks
@@ -55,7 +58,7 @@ class ExperienceActivity : AppCompatActivity() {
             sectionTitleBlock.text = block.sectionTitle
 
             // Set the margins
-            params.setMargins(MARGIN_X,0,MARGIN_X,15)
+            params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_SECTION_TITLE_MARGIN_BOTTOM)
             sectionTitleBlock.layoutParams = params
 
             // Add the Section Title widget to the root layout
@@ -65,21 +68,21 @@ class ExperienceActivity : AppCompatActivity() {
         when (block.type) {
             "audio" -> {
                 view = AudioBlock(block.audio?.audioPath, block.audio?.imagePath, block.audio?.name, this)
-                params.setMargins(MARGIN_X,0,MARGIN_X,50)
+                params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_AUDIO_MARGIN_BOTTOM)
             }
             "bigHeader" -> {
                 view = BigHeaderBlock(block.text?.text, this)
-                params.setMargins(MARGIN_X,0,MARGIN_X,50)
+                params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_BIG_HEADER_MARGIN_BOTTOM)
             }
             "borderlessImage" -> {
                 view = BorderlessImageBlock(block.image?.imagePath, this)
                 // Set the image height here in order to display its background colour
-                params.height = Converter.dpToPixels(BORDERLESS_IMAGE_HEIGHT, this)
-                params.setMargins(0,0,0,50)
+                params.height = Converter.dpToPixels(Constants.BLOCK_BORDERLESS_IMAGE_HEIGHT, this)
+                params.setMargins(0,0,0,Constants.BLOCK_BORDERLESS_IMAGE_MARGIN_BOTTOM)
             }
             "text" -> {
                 view = TextBlock(block.text?.text, this)
-                params.setMargins(MARGIN_X,0,MARGIN_X,50)
+                params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_TEXT_MARGIN_BOTTOM)
             }
         }
 
