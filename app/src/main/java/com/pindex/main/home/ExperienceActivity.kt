@@ -30,8 +30,10 @@ class ExperienceActivity : AppCompatActivity() {
         val blocks: ArrayList<BlockDto>? = experience?.content?.get(0)?.blocksWrapper?.blocks
 
         // Dynamically create a widget for each Pindex block and add it to the activity
-        for (block: BlockDto in blocks!!) {
-            createBlockWidget(block)
+        blocks?.let {
+            for (block: BlockDto in blocks) {
+                createBlockWidget(block)
+            }
         }
     }
 
