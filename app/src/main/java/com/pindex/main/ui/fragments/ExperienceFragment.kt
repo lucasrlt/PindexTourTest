@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pindex.main.R
 import com.pindex.main.adapters.ExperienceAdapter
 import com.pindex.main.home.ExperienceActivity
+import com.pindex.main.utils.Constants
 import com.pindex.main.viewmodels.ExperienceViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -49,7 +50,7 @@ class ExperienceFragment : Fragment(R.layout.fragment_experience) {
     private fun setRecyclerViewOnItemClick() {
         adapter.onItemClick = { experience ->
             val intent = Intent(activity, ExperienceActivity::class.java)
-            intent.putExtra("EXPERIENCE", experience)
+            intent.putExtra(Constants.ACTIVITY_EXPERIENCE_EXTRA_NAME, experience)
 
             // Display the clicked experience activity
             startActivity(intent)
