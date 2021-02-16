@@ -62,7 +62,9 @@ class ExperienceAdapter : PagingDataAdapter<ExperienceDto, ExperienceAdapter.Vie
         init {
             view.setOnClickListener {
                 val experience: ExperienceDto? = getItem(absoluteAdapterPosition)
-                onItemClick?.invoke(experience!!)
+                experience?.let {
+                    onItemClick?.invoke(experience)
+                }
             }
         }
 

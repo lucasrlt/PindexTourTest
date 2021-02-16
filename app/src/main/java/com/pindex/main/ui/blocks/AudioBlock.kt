@@ -43,7 +43,9 @@ class AudioBlock @JvmOverloads constructor(
         buttonView = findViewById(R.id.audio_block_button)
 
         // Set the background image
-        MediaLoader.loadImageFromFirebase(imagePath!!, imageView)
+        imagePath?.let {
+            MediaLoader.loadImageFromFirebase(imagePath, imageView)
+        }
 
         // Set the audio text
         setAudioText(audioName)
@@ -90,15 +92,17 @@ class AudioBlock @JvmOverloads constructor(
             }
             // Media Player already setup: play/pause
             else {
-                // Pause
-                if (mediaPlayer!!.isPlaying) {
-                    setPlayIcon()
-                    mediaPlayer!!.pause()
-                }
-                // Play
-                else {
-                    setPauseIcon()
-                    mediaPlayer!!.start()
+                mediaPlayer?.let {
+                    // Pause
+                    if (it.isPlaying) {
+                        setPlayIcon()
+                        it.pause()
+                    }
+                    // Play
+                    else {
+                        setPauseIcon()
+                        it.start()
+                    }
                 }
             }
         }
