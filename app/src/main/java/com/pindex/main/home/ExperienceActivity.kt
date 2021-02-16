@@ -32,19 +32,19 @@ class ExperienceActivity : AppCompatActivity() {
         // Get the experience Pindex blocks
         val blocks: ArrayList<BlockDto>? = experience?.content?.get(0)?.blocksWrapper?.blocks
 
-        // Dynamically create a widget for each Pindex block and add it to the activity
+        // Dynamically create a view for each Pindex block and add it to the activity
         blocks?.let {
             for (block: BlockDto in blocks) {
-                createBlockWidget(block)
+                createBlockView(block)
             }
         }
     }
 
     /**
-     * Create a widget based on the given [block] type and
+     * Create a view based on the given [block] type and
      * content and then add it to the activity root layout.
      */
-    private fun createBlockWidget(block: BlockDto) {
+    private fun createBlockView(block: BlockDto) {
         var view: View? = null
 
         // Margins are used by the layout ; that is why they are set here
@@ -61,7 +61,7 @@ class ExperienceActivity : AppCompatActivity() {
             params.setMargins(contentMarginX,0,contentMarginX,Constants.BLOCK_SECTION_TITLE_MARGIN_BOTTOM)
             sectionTitleBlock.layoutParams = params
 
-            // Add the Section Title widget to the root layout
+            // Add the Section Title view to the root layout
             layout.addView(sectionTitleBlock)
         }
 
