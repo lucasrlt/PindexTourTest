@@ -10,6 +10,7 @@ import com.pindex.main.R
  * Custom TextView for the Section Title block.
  */
 class SectionTitleBlock @JvmOverloads constructor(
+        title: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
@@ -19,6 +20,9 @@ class SectionTitleBlock @JvmOverloads constructor(
      * Apply the Section Title block styles to this TextView.
      */
     init {
+        // Set the text
+        text = title
+
         // Font family
         typeface = ResourcesCompat.getFont(context, R.font.montserrat_bold)
 
