@@ -32,18 +32,17 @@ class AudioBlock @JvmOverloads constructor(
     // Audio player
     private var mediaPlayer: MediaPlayer? = null
 
-    /**
-     * Setup this View components.
-     */
     init {
         // Inflate the XML layout to this View
-        LayoutInflater.from(context).inflate(R.layout.audio_block, this, true)
+        LayoutInflater.from(context).inflate(R.layout.pindex_block_audio, this, true)
 
-        imageView = findViewById(R.id.audio_block_image)
-        buttonView = findViewById(R.id.audio_block_button)
+        imageView = findViewById(R.id.pindex_block_audio_image)
+        buttonView = findViewById(R.id.pindex_block_audio_button)
 
         // Set the background image
-        MediaLoader.loadImageFromFirebase(imagePath!!, imageView)
+        imagePath?.let {
+            MediaLoader.loadImageFromFirebase(imagePath, imageView)
+        }
 
         // Set the audio text
         setAudioText(audioName)
@@ -90,15 +89,17 @@ class AudioBlock @JvmOverloads constructor(
             }
             // Media Player already setup: play/pause
             else {
-                // Pause
-                if (mediaPlayer!!.isPlaying) {
-                    setPlayIcon()
-                    mediaPlayer!!.pause()
-                }
-                // Play
-                else {
-                    setPauseIcon()
-                    mediaPlayer!!.start()
+                mediaPlayer?.let {
+                    // Pause
+                    if (it.isPlaying) {
+                        setPlayIcon()
+                        it.pause()
+                    }
+                    // Play
+                    else {
+                        setPauseIcon()
+                        it.start()
+                    }
                 }
             }
         }
