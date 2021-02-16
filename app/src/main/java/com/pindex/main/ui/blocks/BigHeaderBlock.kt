@@ -2,35 +2,30 @@ package com.pindex.main.ui.blocks
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.res.ResourcesCompat
 import com.pindex.main.R
 
 /**
- * Custom TextView for the Big Header block.
+ * Custom View for the Big Header block.
  */
 class BigHeaderBlock @JvmOverloads constructor(
         title: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
-) : AppCompatTextView(context, attrs, defStyle) {
+) : FrameLayout(context, attrs, defStyle) {
 
-    /**
-     * Apply the Big Header block styles to this TextView.
-     */
+    private val textView: AppCompatTextView
+
     init {
+        LayoutInflater.from(context).inflate(R.layout.pindex_block_big_header, this, true)
+
+        textView = findViewById(R.id.pindex_block_big_header)
+
         // Set the text
-        text = title
-
-        // Font family
-        typeface = ResourcesCompat.getFont(context, R.font.montserrat_bold)
-
-        // Font size
-        textSize = 36f
-
-        // Font colour
-        setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_lead, null))
+        textView.text = title
     }
 
 }

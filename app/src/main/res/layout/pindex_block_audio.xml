@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.blocks.AudioBlock">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- CardView is useful to apply a border radius and an elevation -->
     <androidx.cardview.widget.CardView
@@ -15,16 +13,16 @@
 
         <!-- Background image -->
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/audio_block_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/pindex_block_audio_image"
             android:foreground="@color/semi_black_overlay"/>
 
         <!-- Icon + text -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/audio_block_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/pindex_block_audio_button"
             android:background="@android:color/transparent"
             android:gravity="left|center_vertical"
             android:fontFamily="@font/montserrat_semibold"

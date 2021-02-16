@@ -2,32 +2,32 @@ package com.pindex.main.ui.blocks
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.res.ResourcesCompat
 import com.pindex.main.R
 import com.pindex.main.utils.MediaLoader
 
 /**
- * Custom ImageView for the Borderless Image block.
+ * Custom View for the Borderless Image block.
  */
 class BorderlessImageBlock @JvmOverloads constructor(
         imagePath: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
-) : AppCompatImageView(context, attrs, defStyle) {
+) : FrameLayout(context, attrs, defStyle) {
 
-    /**
-     * Apply Borderless Image block styles to this ImageView.
-     */
+    private val imageView: AppCompatImageView
+
     init {
-        // Adjust the image bounds to preserve the aspect ratio
-        adjustViewBounds = true
+        LayoutInflater.from(context).inflate(R.layout.pindex_block_borderless_image, this, true)
 
-        // Background colour to display while the image is being loaded
-        setBackgroundColor(ResourcesCompat.getColor(resources, R.color.light_grey, null))
+        imageView = findViewById(R.id.pindex_block_borderless_image)
 
         // Load the image from Firebase
-        MediaLoader.loadImageFromFirebase(imagePath!!, this)
+        imagePath?.let {
+            MediaLoader.loadImageFromFirebase(imagePath, imageView)
+        }
     }
 }

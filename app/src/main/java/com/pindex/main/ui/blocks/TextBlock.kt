@@ -2,35 +2,30 @@ package com.pindex.main.ui.blocks
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.res.ResourcesCompat
 import com.pindex.main.R
 
 /**
- * Custom TextView for the Text block.
+ * Custom View for the Text block.
  */
 class TextBlock @JvmOverloads constructor(
         content: String?,
         context: Context,
         attrs: AttributeSet? = null,
         defStyle: Int = 0
-) : AppCompatTextView(context, attrs, defStyle) {
+) : FrameLayout(context, attrs, defStyle) {
 
-    /**
-     * Apply the Text block styles to this TextView.
-     */
+    private val textView: AppCompatTextView
+
     init {
+        LayoutInflater.from(context).inflate(R.layout.pindex_block_text, this, true)
+
+        textView = findViewById(R.id.pindex_block_text)
+
         // Set the text
-        text = content
-
-        // Font family
-        typeface = ResourcesCompat.getFont(context, R.font.montserrat_semibold)
-
-        // Font size
-        textSize = 17f
-
-        // Font colour
-        setTextColor(ResourcesCompat.getColor(resources, R.color.pindex_text, null))
+        textView.text = content
     }
 
 }
