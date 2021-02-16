@@ -14,7 +14,7 @@ import com.pindex.main.viewmodels.ExperienceViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class ExperienceFragment : Fragment(R.layout.fragment_experience) {
+class ExperienceFragment : Fragment(R.layout.fragment_experiences_list) {
 
     private lateinit var rvActivity: RecyclerView
     private lateinit var viewModel: ExperienceViewModel

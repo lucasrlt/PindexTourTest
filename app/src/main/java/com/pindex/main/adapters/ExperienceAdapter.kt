@@ -26,7 +26,7 @@ class ExperienceAdapter : PagingDataAdapter<ExperienceDto, ExperienceAdapter.Vie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_experience, parent, false)
+            .inflate(R.layout.experiences_list_item_row, parent, false)
 
         return ViewHolder(view)
     }
