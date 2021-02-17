@@ -1,49 +1,45 @@
-package com.pindex.main.ui.blocks
+package com.pindex.main.ui.fragments.blocks
 
-import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
-import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.widget.FrameLayout
+import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.Fragment
 import com.pindex.main.R
+import com.pindex.main.utils.Constants
 import com.pindex.main.utils.MediaLoader
 
 /**
- * Custom View for the Audio block.
+ * Custom Fragment for the Audio block.
  */
-class AudioBlock @JvmOverloads constructor(
-        audioName: String?,
-        audioPath: String?,
-        imagePath: String?,
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyle: Int = 0
-) : FrameLayout(context, attrs, defStyle) {
+class AudioBlockFragment(
+        private val audioName: String?,
+        private val audioPath: String?,
+        private val imagePath: String?,
+) : Fragment(R.layout.pindex_block_audio) {
 
     // Background image
-    private val imageView: AppCompatImageView
+    private lateinit var imageView: AppCompatImageView
 
     // Button (icon + text)
-    private val buttonView: AppCompatButton
+    private lateinit var buttonView: AppCompatButton
 
     // Audio player
     private var mediaPlayer: MediaPlayer? = null
 
-    init {
-        // Inflate the XML layout to this View
-        LayoutInflater.from(context).inflate(R.layout.pindex_block_audio, this, true)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        imageView = findViewById(R.id.pindex_block_audio_image)
-        buttonView = findViewById(R.id.pindex_block_audio_button)
+        imageView = view.findViewById(R.id.pindex_block_audio_image)
+        buttonView = view.findViewById(R.id.pindex_block_audio_button)
 
         // Set the background image
         imagePath?.let {
             MediaLoader.loadImageFromFirebase(imagePath, imageView)
         }
-
         // Set the audio text
         setAudioText(audioName)
 
@@ -103,6 +99,19 @@ class AudioBlock @JvmOverloads constructor(
                 }
             }
         }
+
+        // Set the LayoutParams
+        var params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+        )
+        params.setMargins(
+                Constants.ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X,
+                0,
+                Constants.ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X,
+                Constants.BLOCK_AUDIO_MARGIN_BOTTOM
+        )
+        view.layoutParams = params
     }
 
     /**
