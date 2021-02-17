@@ -15,11 +15,7 @@ import com.pindex.main.utils.MediaLoader
 /**
  * Custom Fragment for the Audio block.
  */
-class AudioBlockFragment(
-        private val audioName: String?,
-        private val audioPath: String?,
-        private val imagePath: String?,
-) : Fragment(R.layout.pindex_block_audio) {
+class AudioBlockFragment : Fragment(R.layout.pindex_block_audio) {
 
     // Background image
     private lateinit var imageView: AppCompatImageView
@@ -37,10 +33,12 @@ class AudioBlockFragment(
         buttonView = view.findViewById(R.id.pindex_block_audio_button)
 
         // Set the background image
+        val imagePath = arguments?.getString("imagePath")
         imagePath?.let {
             MediaLoader.loadImageFromFirebase(imagePath, imageView)
         }
         // Set the audio text
+        val audioName = arguments?.getString("name")
         setAudioText(audioName)
 
         // Set the button on click event
@@ -77,7 +75,7 @@ class AudioBlockFragment(
                     )
 
                     // Audio file URL
-                    setDataSource(audioPath)
+                    setDataSource(arguments?.getString("audioPath"))
 
                     // To avoid blocking the UI: MediaPlayer.OnPreparedListener is called when ready
                     prepareAsync()

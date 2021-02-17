@@ -11,9 +11,7 @@ import com.pindex.main.utils.Constants
 /**
  * Custom Fragment for the Text block.
  */
-class TextBlockFragment(
-        private val content: String?,
-) : Fragment(R.layout.pindex_block_text) {
+class TextBlockFragment : Fragment(R.layout.pindex_block_text) {
 
     private lateinit var textView: AppCompatTextView
 
@@ -23,7 +21,7 @@ class TextBlockFragment(
         textView = view.findViewById(R.id.pindex_block_text)
 
         // Set the text
-        textView.text = content
+        textView.text = arguments?.getString("text")
 
         // Set the LayoutParams
         var params = LinearLayout.LayoutParams(

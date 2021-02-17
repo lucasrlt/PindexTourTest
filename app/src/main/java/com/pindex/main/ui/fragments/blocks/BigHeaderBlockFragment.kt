@@ -11,9 +11,7 @@ import com.pindex.main.utils.Constants
 /**
  * Custom Fragment for the Big Header block.
  */
-class BigHeaderBlockFragment(
-        private val title: String?,
-) : Fragment(R.layout.pindex_block_big_header) {
+class BigHeaderBlockFragment : Fragment(R.layout.pindex_block_big_header) {
 
     private lateinit var textView: AppCompatTextView
 
@@ -23,7 +21,7 @@ class BigHeaderBlockFragment(
         textView = view.findViewById(R.id.pindex_block_big_header)
 
         // Set the text
-        textView.text = title
+        textView.text = arguments?.getString("title")
 
         // Set the LayoutParams
         var params = LinearLayout.LayoutParams(

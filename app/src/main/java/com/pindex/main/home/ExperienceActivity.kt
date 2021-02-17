@@ -3,6 +3,7 @@ package com.pindex.main.home
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.pindex.main.R
 import com.pindex.main.models.BlockDto
@@ -42,7 +43,8 @@ class ExperienceActivity : AppCompatActivity() {
     private fun createBlockFragment(block: BlockDto) {
         // Create and add a Section Title when the block has a sectionTitle property
         if (block.sectionTitle != null) {
-            var sectionTitleBlock = SectionTitleBlockFragment(block.sectionTitle)
+            var sectionTitleBlock = SectionTitleBlockFragment()
+            sectionTitleBlock.arguments = bundleOf("title" to block.sectionTitle)
 
             // Add the Section Title fragment to the root layout
             supportFragmentManager.beginTransaction()
@@ -55,16 +57,24 @@ class ExperienceActivity : AppCompatActivity() {
         // Create a fragment based on the block type
         when (block.type) {
             "audio" -> {
-                fragment = AudioBlockFragment(block.audio?.audioPath, block.audio?.imagePath, block.audio?.name)
+                fragment = AudioBlockFragment()
+                fragment.arguments = bundleOf(
+                        "audioPath" to block.audio?.audioPath,
+                        "imagePath" to block.audio?.imagePath,
+                        "name" to block.audio?.name,
+                )
             }
             "bigHeader" -> {
-                fragment = BigHeaderBlockFragment(block.text?.text)
+                fragment = BigHeaderBlockFragment()
+                fragment.arguments = bundleOf("title" to block.text?.text)
             }
             "borderlessImage" -> {
-                fragment = BorderlessImageBlockFragment(block.image?.imagePath)
+                fragment = BorderlessImageBlockFragment()
+                fragment.arguments = bundleOf("imagePath" to block.image?.imagePath)
             }
             "text" -> {
-                fragment = TextBlockFragment(block.text?.text)
+                fragment = TextBlockFragment()
+                fragment.arguments = bundleOf("text" to block.text?.text)
             }
         }
 

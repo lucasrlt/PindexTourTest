@@ -11,9 +11,7 @@ import com.pindex.main.utils.Constants
 /**
  * Custom Fragment for the Section Title block.
  */
-class SectionTitleBlockFragment(
-        private val title: String?,
-) : Fragment(R.layout.pindex_block_section_title) {
+class SectionTitleBlockFragment : Fragment(R.layout.pindex_block_section_title) {
 
     private lateinit var textView: AppCompatTextView
 
@@ -23,7 +21,7 @@ class SectionTitleBlockFragment(
         textView = view.findViewById(R.id.pindex_block_section_title)
 
         // Set the text
-        textView.text = title
+        textView.text = arguments?.getString("title")
 
         // Set the LayoutParams
         var params = LinearLayout.LayoutParams(
