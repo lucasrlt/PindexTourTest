@@ -4,12 +4,10 @@ import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.pindex.main.R
-import com.pindex.main.utils.Constants
 import com.pindex.main.utils.MediaLoader
 
 /**
