@@ -97,19 +97,6 @@ class AudioBlockFragment : Fragment(R.layout.pindex_block_audio) {
                 }
             }
         }
-
-        // Set the LayoutParams
-        var params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-        )
-        params.setMargins(
-                Constants.ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X,
-                0,
-                Constants.ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X,
-                Constants.BLOCK_AUDIO_MARGIN_BOTTOM
-        )
-        view.layoutParams = params
     }
 
     /**

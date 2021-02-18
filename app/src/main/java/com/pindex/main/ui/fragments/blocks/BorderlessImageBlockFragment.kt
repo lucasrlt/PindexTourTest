@@ -27,23 +27,6 @@ class BorderlessImageBlockFragment : Fragment(R.layout.pindex_block_borderless_i
         imagePath?.let {
             MediaLoader.loadImageFromFirebase(imagePath, imageView)
         }
-
-        // Set the LayoutParams
-        var params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-        )
-        params.setMargins(
-                0,
-                0,
-                0,
-                Constants.BLOCK_BORDERLESS_IMAGE_MARGIN_BOTTOM
-        )
-        // Set the image height
-        context?.let {
-            params.height = Converter.dpToPixels(Constants.BLOCK_BORDERLESS_IMAGE_HEIGHT, it)
-        }
-        view.layoutParams = params
     }
 
 }

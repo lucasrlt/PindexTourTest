@@ -63,9 +63,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2' // for ActivityScenarioRule
-    def fragment_version = "1.2.5"
-
-    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+    // https://stackoverflow.com/questions/56365335/androidtests-stopped-building-after-adding-androidx-fragmentfragment-testing-de?noredirect=1&lq=1
+    implementation ("androidx.fragment:fragment-testing:1.2.5", {
+        exclude group: 'androidx.test', module: 'core'
+    })
 
     // To avoid compilation errors due to the DEX limitations
     implementation 'com.android.support:multidex:1.0.3'
