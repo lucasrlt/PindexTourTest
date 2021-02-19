@@ -9,7 +9,7 @@ import com.pindex.main.R
 /**
  * Custom Fragment for the Text block.
  */
-class TextBlockFragment : Fragment(R.layout.pindex_block_text) {
+class TextBlockFragment : Fragment(R.layout.fragment_pindex_block_text) {
 
     private lateinit var textView: AppCompatTextView
 

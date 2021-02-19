@@ -9,7 +9,7 @@ import com.pindex.main.R
 /**
  * Custom Fragment for the Section Title block.
  */
-class SectionTitleBlockFragment : Fragment(R.layout.pindex_block_section_title) {
+class SectionTitleBlockFragment : Fragment(R.layout.fragment_pindex_block_section_title) {
 
     private lateinit var textView: AppCompatTextView
 

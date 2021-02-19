@@ -13,7 +13,7 @@ import com.pindex.main.utils.MediaLoader
 /**
  * Custom Fragment for the Audio block.
  */
-class AudioBlockFragment : Fragment(R.layout.pindex_block_audio) {
+class AudioBlockFragment : Fragment(R.layout.fragment_pindex_block_audio) {
 
     // Background image
     private lateinit var imageView: AppCompatImageView

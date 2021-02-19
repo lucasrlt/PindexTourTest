@@ -10,7 +10,7 @@ import com.pindex.main.utils.MediaLoader
 /**
  * Custom Fragment for the Borderless Image block.
  */
-class BorderlessImageBlockFragment : Fragment(R.layout.pindex_block_borderless_image) {
+class BorderlessImageBlockFragment : Fragment(R.layout.fragment_pindex_block_borderless_image) {
 
     private lateinit var imageView: AppCompatImageView
 

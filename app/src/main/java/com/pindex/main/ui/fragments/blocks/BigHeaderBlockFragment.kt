@@ -9,7 +9,7 @@ import com.pindex.main.R
 /**
  * Custom Fragment for the Big Header block.
  */
-class BigHeaderBlockFragment : Fragment(R.layout.pindex_block_big_header) {
+class BigHeaderBlockFragment : Fragment(R.layout.fragment_pindex_block_big_header) {
 
     private lateinit var textView: AppCompatTextView
 
