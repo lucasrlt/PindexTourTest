@@ -12,6 +12,7 @@ import com.pindex.main.models.BlockDto
 import com.pindex.main.models.BlocksWrapperDto
 import com.pindex.main.models.ContentDto
 import com.pindex.main.models.ExperienceDto
+import com.pindex.main.models.blocks.AudioBlockDto
 import com.pindex.main.models.blocks.TextBlockDto
 import com.pindex.main.utils.Constants
 import org.junit.After
@@ -72,6 +73,26 @@ class ExperienceActivityInstrumentedTest {
     }
 
     /**
+     * Create and add an Audio block with the given [name] to the blocks list.
+     */
+    private fun addAudioBlock(name: String) {
+        val audioBlock = AudioBlockDto(name = name)
+        val block = BlockDto(audio = audioBlock, type = "audio")
+
+        addBlock(block)
+    }
+
+    /**
+     * Create and add a Big Header block with the given [title] to the blocks list.
+     */
+    private fun addBigHeaderBlock(title: String) {
+        val textBlock = TextBlockDto(text = title)
+        val block = BlockDto(text = textBlock, type = "bigHeader")
+
+        addBlock(block)
+    }
+
+    /**
      * Create and add a Text block with the given [text] to the blocks list.
      */
     private fun addTextBlock(text: String) {
@@ -82,10 +103,44 @@ class ExperienceActivityInstrumentedTest {
     }
 
     /**
-     * Tests that the HomeActivity display the recycler view when launched.
+     * Test that the Experience Activity given an Audio block displays this block.
      */
     @Test
-    fun launchingExperienceActivityWithTextBlockDisplaysItsText() {
+    fun launchingExperienceActivityWithAudioBlockDisplaysIt() {
+        val name = "Insomnia - KAS:ST"
+        addAudioBlock(name = name)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Text block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_button))
+                .check(ViewAssertions.matches(ViewMatchers.withText(name)))
+    }
+
+    /**
+     * Test that the Experience Activity given a Big Header block displays this block.
+     */
+    @Test
+    fun launchingExperienceActivityWithBigHeaderBlockDisplaysIt() {
+        val title = "London isn't England"
+        addBigHeaderBlock(title)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Text block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header))
+                .check(ViewAssertions.matches(ViewMatchers.withText(title)))
+    }
+
+    /**
+     * Test that the Experience Activity given a Text block displays this block.
+     */
+    @Test
+    fun launchingExperienceActivityWithTextBlockDisplaysIt() {
         val text = "En fait, c'est pas si terrible que ça le testing Android..."
         addTextBlock(text)
 
