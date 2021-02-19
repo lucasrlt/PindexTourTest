@@ -13,6 +13,7 @@ import com.pindex.main.models.BlocksWrapperDto
 import com.pindex.main.models.ContentDto
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.models.blocks.AudioBlockDto
+import com.pindex.main.models.blocks.ImageBlockDto
 import com.pindex.main.models.blocks.TextBlockDto
 import com.pindex.main.utils.Constants
 import org.junit.After
@@ -94,6 +95,17 @@ class ExperienceActivityInstrumentedTest {
     }
 
     /**
+     * Create and add a Borderless Image block to the blocks list.
+     * By passing a [sectionTitle] argument, it will also create a Section Title block.
+     */
+    private fun addBorderlessImageBlock(sectionTitle: String = "") {
+        val imageBlock = ImageBlockDto()
+        val block = BlockDto(image = imageBlock, sectionTitle = sectionTitle, type = "borderlessImage")
+
+        addBlock(block)
+    }
+
+    /**
      * Create and add a Text block with the given [text] to the blocks list.
      * By passing a [sectionTitle] argument, it will also create a Section Title block.
      */
@@ -158,6 +170,35 @@ class ExperienceActivityInstrumentedTest {
         // Assert that the Big Header block title is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header))
                 .check(ViewAssertions.matches(ViewMatchers.withText(title)))
+    }
+
+    /**
+     * Test that the Experience Activity given a Borderless Image block displays this block.
+     */
+    @Test
+    fun launchingExperienceActivityWithBorderlessImageBlockDisplaysIt() {
+        addBorderlessImageBlock()
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+    }
+
+    /**
+     * Test that the Experience Activity given a Borderless Image block and a Section Title displays them.
+     */
+    @Test
+    fun launchingExperienceActivityWithBorderlessImageBlockAndSectionTitleDisplaysThem() {
+        val sectionTitle = "La petite grenouille verte"
+        addBorderlessImageBlock(sectionTitle)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Section Title block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_section_title))
+                .check(ViewAssertions.matches(ViewMatchers.withText(sectionTitle)))
     }
 
     /**
