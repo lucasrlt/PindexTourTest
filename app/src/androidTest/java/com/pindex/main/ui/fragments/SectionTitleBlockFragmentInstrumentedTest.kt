@@ -21,6 +21,11 @@ class SectionTitleBlockFragmentInstrumentedTest {
         val fragmentArgs = bundleOf("title" to title)
         launchFragmentInContainer<SectionTitleBlockFragment>(fragmentArgs)
 
+        // Assert that the fragment is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_section_title_fragment))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Assert that the section title is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_section_title))
             .check(ViewAssertions.matches(ViewMatchers.withText(title)))
     }

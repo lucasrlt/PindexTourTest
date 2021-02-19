@@ -16,17 +16,16 @@ class AudioBlockFragmentInstrumentedTest {
 
     @Test
     fun theAudioBlockShouldDisplay() {
-        val imagePath = "l"
         val name = "303 Acid Bass"
-        val audioPath = "l"
 
-        val fragmentArgs = bundleOf(
-            "imagePath" to imagePath,
-            "name" to name,
-            "audioPath" to audioPath
-        )
+        val fragmentArgs = bundleOf("name" to name)
         launchFragmentInContainer<AudioBlockFragment>(fragmentArgs)
 
+        // Assert that the fragment is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_fragment))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Assert that the audio name is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_button))
             .check(ViewAssertions.matches(ViewMatchers.withText(name)))
     }

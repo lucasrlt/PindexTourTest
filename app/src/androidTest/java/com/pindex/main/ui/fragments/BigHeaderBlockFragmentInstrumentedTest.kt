@@ -21,6 +21,11 @@ class BigHeaderBlockFragmentInstrumentedTest {
         val fragmentArgs = bundleOf("title" to title)
         launchFragmentInContainer<BigHeaderBlockFragment>(fragmentArgs)
 
+        // Assert that the fragment is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header_fragment))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Assert that the big header title is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header))
             .check(ViewAssertions.matches(ViewMatchers.withText(title)))
     }

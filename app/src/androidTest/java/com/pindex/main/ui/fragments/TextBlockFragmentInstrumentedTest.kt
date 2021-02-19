@@ -21,6 +21,11 @@ class TextBlockFragmentInstrumentedTest {
         val fragmentArgs = bundleOf("text" to text)
         launchFragmentInContainer<TextBlockFragment>(fragmentArgs)
 
+        // Assert that the fragment is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_text_fragment))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Assert that the text is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_text))
             .check(ViewAssertions.matches(ViewMatchers.withText(text)))
     }
