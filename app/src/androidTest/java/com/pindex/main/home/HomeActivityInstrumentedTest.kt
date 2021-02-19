@@ -1,4 +1,4 @@
-package com
+package com.pindex.main.home
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -14,17 +14,17 @@ import org.junit.runner.RunWith
 import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
-class HomeInstrumentedTest {
+class HomeActivityInstrumentedTest {
 
     @get:Rule
     val activityScenarioRule = activityScenarioRule<HomeActivity>()
 
     /**
-     * Tests that the HomeActivity display the recycler view when launched.
+     * Test that the Home Activity displays the experiences list fragment.
      */
     @Test
-    fun launchingHomeActivityDisplaysRecyclerView() {
-        onView(withId(R.id.home_view)).check(matches(isDisplayed()))
+    fun launchingHomeActivityDisplaysExperiencesListFragment() {
+        onView(withId(R.id.fragment_experiences_list)).check(matches(isDisplayed()))
     }
 
 }
