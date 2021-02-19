@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class BigHeaderBlockFragmentInstrumentedTest {
 
     @Test
-    fun theBigHeaderBlockShouldDisplayItsTitle() {
+    fun bigHeaderBlockShouldDisplayItsTitle() {
         val title = "Street Parade 2021"
 
         val fragmentArgs = bundleOf("title" to title)

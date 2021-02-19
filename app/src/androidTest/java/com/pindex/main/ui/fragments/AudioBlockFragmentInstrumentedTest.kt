@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class AudioBlockFragmentInstrumentedTest {
 
     @Test
-    fun theAudioBlockShouldDisplay() {
+    fun audioBlockShouldDisplayItsAudioName() {
         val name = "303 Acid Bass"
 
         val fragmentArgs = bundleOf("name" to name)

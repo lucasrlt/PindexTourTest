@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class SectionTitleBlockFragmentInstrumentedTest {
 
     @Test
-    fun theSectionTitleBlockShouldDisplayItsTitle() {
+    fun sectionTitleBlockShouldDisplayItsTitle() {
         val title = "Rave au Gadget Club"
 
         val fragmentArgs = bundleOf("title" to title)

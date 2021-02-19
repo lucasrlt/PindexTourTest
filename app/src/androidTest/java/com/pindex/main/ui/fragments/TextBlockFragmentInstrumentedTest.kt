@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class TextBlockFragmentInstrumentedTest {
 
     @Test
-    fun theTextBlockShouldDisplayItsText() {
+    fun textBlockShouldDisplayItsText() {
         val text = "« Afin de travailler efficacement, il est conseillé d'aller manger à 11:42 » Le Patron Tim"
 
         val fragmentArgs = bundleOf("text" to text)
