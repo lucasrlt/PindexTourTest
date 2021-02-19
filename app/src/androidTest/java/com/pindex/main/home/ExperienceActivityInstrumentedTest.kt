@@ -240,4 +240,34 @@ class ExperienceActivityInstrumentedTest {
                 .check(ViewAssertions.matches(ViewMatchers.withText(text)))
     }
 
+    /**
+     * Test that the Experience Activity given multiple blocks displays them.
+     */
+    @Test
+    fun launchingExperienceActivityWithMultipleBlocksDisplaysThem() {
+        val audioName = "Audio Block"
+        val bigHeaderTitle = "Big Header"
+        val text = "Text Block"
+
+        addAudioBlock(audioName)
+        addBigHeaderBlock(bigHeaderTitle)
+        addTextBlock(text)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Audio block name is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_button))
+                .check(ViewAssertions.matches(ViewMatchers.withText(audioName)))
+
+        // Assert that the Big Header block title is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header))
+                .check(ViewAssertions.matches(ViewMatchers.withText(bigHeaderTitle)))
+
+        // Assert that the Text block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_text))
+                .check(ViewAssertions.matches(ViewMatchers.withText(text)))
+    }
+
 }
