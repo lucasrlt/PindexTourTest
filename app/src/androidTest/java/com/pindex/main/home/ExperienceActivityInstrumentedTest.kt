@@ -74,10 +74,11 @@ class ExperienceActivityInstrumentedTest {
 
     /**
      * Create and add an Audio block with the given [name] to the blocks list.
+     * By passing a [sectionTitle] argument, it will also create a Section Title block.
      */
-    private fun addAudioBlock(name: String) {
+    private fun addAudioBlock(name: String, sectionTitle: String = "") {
         val audioBlock = AudioBlockDto(name = name)
-        val block = BlockDto(audio = audioBlock, type = "audio")
+        val block = BlockDto(audio = audioBlock, sectionTitle = sectionTitle, type = "audio")
 
         addBlock(block)
     }
@@ -94,10 +95,11 @@ class ExperienceActivityInstrumentedTest {
 
     /**
      * Create and add a Text block with the given [text] to the blocks list.
+     * By passing a [sectionTitle] argument, it will also create a Section Title block.
      */
-    private fun addTextBlock(text: String) {
+    private fun addTextBlock(text: String, sectionTitle: String = "") {
         val textBlock = TextBlockDto(text = text)
-        val block = BlockDto(text = textBlock, type = "text")
+        val block = BlockDto(text = textBlock, sectionTitle = sectionTitle, type = "text")
 
         addBlock(block)
     }
@@ -114,7 +116,29 @@ class ExperienceActivityInstrumentedTest {
 
         assertActivityIsDisplayed()
 
-        // Assert that the Text block text is displayed
+        // Assert that the audio name is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_button))
+                .check(ViewAssertions.matches(ViewMatchers.withText(name)))
+    }
+
+    /**
+     * Test that the Experience Activity given a Text block and a Section Title displays them.
+     */
+    @Test
+    fun launchingExperienceActivityWithAudioBlockAndSectionTitleDisplaysThem() {
+        val sectionTitle = "Sur SoundCloud"
+        val name = "My Dirty Pleasure #1"
+        addAudioBlock(name = name, sectionTitle = sectionTitle)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Section Title block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_section_title))
+                .check(ViewAssertions.matches(ViewMatchers.withText(sectionTitle)))
+
+        // Assert that the audio name is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_audio_button))
                 .check(ViewAssertions.matches(ViewMatchers.withText(name)))
     }
@@ -131,7 +155,7 @@ class ExperienceActivityInstrumentedTest {
 
         assertActivityIsDisplayed()
 
-        // Assert that the Text block text is displayed
+        // Assert that the Big Header block title is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_big_header))
                 .check(ViewAssertions.matches(ViewMatchers.withText(title)))
     }
@@ -147,6 +171,28 @@ class ExperienceActivityInstrumentedTest {
         startActivityWithBlocksList()
 
         assertActivityIsDisplayed()
+
+        // Assert that the Text block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_text))
+                .check(ViewAssertions.matches(ViewMatchers.withText(text)))
+    }
+
+    /**
+    * Test that the Experience Activity given a Text block and a Section Title displays them.
+    */
+    @Test
+    fun launchingExperienceActivityWithTextBlockAndSectionTitleDisplaysThem() {
+        val sectionTitle = "Petite blague"
+        val text = "Non je déconne hein !"
+        addTextBlock(text, sectionTitle)
+
+        startActivityWithBlocksList()
+
+        assertActivityIsDisplayed()
+
+        // Assert that the Section Title block text is displayed
+        Espresso.onView(ViewMatchers.withId(R.id.pindex_block_section_title))
+                .check(ViewAssertions.matches(ViewMatchers.withText(sectionTitle)))
 
         // Assert that the Text block text is displayed
         Espresso.onView(ViewMatchers.withId(R.id.pindex_block_text))
