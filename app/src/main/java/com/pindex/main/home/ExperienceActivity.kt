@@ -1,9 +1,7 @@
 package com.pindex.main.home
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
