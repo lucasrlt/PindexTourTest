@@ -53,6 +53,33 @@ object Constants {
     }
 
     /**
+     * The Pindex blocks types.
+     */
+    object BlocksTypes {
+
+        /**
+         * Audio block.
+         */
+        const val AUDIO: String = "audio"
+
+        /**
+         * Big Header block.
+         */
+        const val BIG_HEADER: String = "bigHeader"
+
+        /**
+         * Borderless Image block.
+         */
+        const val BORDERLESS_IMAGE: String = "borderlessImage"
+
+        /**
+         * Text block.
+         */
+        const val TEXT: String = "text"
+
+    }
+
+    /**
      * The experiences collection name in Firestore.
      */
     const val FIRESTORE_EXPERIENCES_COLLECTION: String = "activities"

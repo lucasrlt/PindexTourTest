@@ -56,7 +56,7 @@ class ExperienceActivity : AppCompatActivity() {
 
         // Create a fragment based on the block type
         when (block.type) {
-            "audio" -> {
+            Constants.BlocksTypes.AUDIO -> {
                 fragment = AudioBlockFragment()
                 fragment.arguments = bundleOf(
                         Constants.BlockFragmentArguments.AUDIO_BLOCK_AUDIO_PATH to block.audio?.audioPath,
@@ -64,15 +64,15 @@ class ExperienceActivity : AppCompatActivity() {
                         Constants.BlockFragmentArguments.AUDIO_BLOCK_NAME to block.audio?.name,
                 )
             }
-            "bigHeader" -> {
+            Constants.BlocksTypes.BIG_HEADER -> {
                 fragment = BigHeaderBlockFragment()
                 fragment.arguments = bundleOf(Constants.BlockFragmentArguments.BIG_HEADER_BLOCK_TITLE to block.text?.text)
             }
-            "borderlessImage" -> {
+            Constants.BlocksTypes.BORDERLESS_IMAGE -> {
                 fragment = BorderlessImageBlockFragment()
                 fragment.arguments = bundleOf(Constants.BlockFragmentArguments.BORDERLESS_IMAGE_BLOCK_TITLE to block.image?.imagePath)
             }
-            "text" -> {
+            Constants.BlocksTypes.TEXT -> {
                 fragment = TextBlockFragment()
                 fragment.arguments = bundleOf(Constants.BlockFragmentArguments.TEXT_BLOCK_TEXT to block.text?.text)
             }

@@ -25,18 +25,6 @@ import org.junit.runner.RunWith
 class ExperienceActivityInstrumentedTest {
 
     /**
-     * Pindex blocks types from Firestore.
-     */
-    object PindexBlockTypes {
-
-        const val AUDIO_TYPE: String = "audio"
-        const val BIG_HEADER_TYPE: String = "bigHeader"
-        const val BORDERLESS_IMAGE_TYPE: String = "borderlessImage"
-        const val TEXT_TYPE: String = "text"
-
-    }
-
-    /**
      * Test Experience Activity
      */
     private lateinit var activityScenario: ActivityScenario<ExperienceActivity>
@@ -97,7 +85,7 @@ class ExperienceActivityInstrumentedTest {
      */
     private fun addAudioBlock(name: String, sectionTitle: String = "") {
         val audioBlock = AudioBlockDto(name = name)
-        val block = BlockDto(audio = audioBlock, sectionTitle = sectionTitle, type = PindexBlockTypes.AUDIO_TYPE)
+        val block = BlockDto(audio = audioBlock, sectionTitle = sectionTitle, type = Constants.BlocksTypes.AUDIO)
 
         addBlock(block)
     }
@@ -107,7 +95,7 @@ class ExperienceActivityInstrumentedTest {
      */
     private fun addBigHeaderBlock(title: String) {
         val textBlock = TextBlockDto(text = title)
-        val block = BlockDto(text = textBlock, type = PindexBlockTypes.BIG_HEADER_TYPE)
+        val block = BlockDto(text = textBlock, type = Constants.BlocksTypes.BIG_HEADER)
 
         addBlock(block)
     }
@@ -118,7 +106,7 @@ class ExperienceActivityInstrumentedTest {
      */
     private fun addBorderlessImageBlock(sectionTitle: String = "") {
         val imageBlock = ImageBlockDto()
-        val block = BlockDto(image = imageBlock, sectionTitle = sectionTitle, type = PindexBlockTypes.BORDERLESS_IMAGE_TYPE)
+        val block = BlockDto(image = imageBlock, sectionTitle = sectionTitle, type = Constants.BlocksTypes.BORDERLESS_IMAGE)
 
         addBlock(block)
     }
@@ -129,7 +117,7 @@ class ExperienceActivityInstrumentedTest {
      */
     private fun addTextBlock(text: String, sectionTitle: String = "") {
         val textBlock = TextBlockDto(text = text)
-        val block = BlockDto(text = textBlock, sectionTitle = sectionTitle, type = PindexBlockTypes.TEXT_TYPE)
+        val block = BlockDto(text = textBlock, sectionTitle = sectionTitle, type = Constants.BlocksTypes.TEXT)
 
         addBlock(block)
     }
