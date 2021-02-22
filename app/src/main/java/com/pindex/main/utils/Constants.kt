@@ -6,44 +6,78 @@ package com.pindex.main.utils
 object Constants {
 
     /**
-     * The horizontal margin value for the experience activity content.
-     */
-    const val ACTIVITY_EXPERIENCE_CONTENT_MARGIN_X: Int = 60
-
-    /**
      * The experience activity extra name to pass data.
      */
     const val ACTIVITY_EXPERIENCE_EXTRA_NAME: String = "EXTRA_EXPERIENCE"
 
     /**
-     * The Audio block margin bottom.
+     * The Pindex blocks fragments arguments names to pass data.
      */
-    const val BLOCK_AUDIO_MARGIN_BOTTOM: Int = 50
+    object BlockFragmentArguments {
+
+        /**
+         * The audio block audio path argument.
+         */
+        const val AUDIO_BLOCK_AUDIO_PATH: String = "audioPath"
+
+        /**
+         * The audio block image path argument.
+         */
+        const val AUDIO_BLOCK_IMAGE_PATH: String = "imagePath"
+
+        /**
+         * The audio block name argument.
+         */
+        const val AUDIO_BLOCK_NAME: String = "name"
+
+        /**
+         * The big header block title argument.
+         */
+        const val BIG_HEADER_BLOCK_TITLE: String = "title"
+
+        /**
+         * The borderless image block image path argument.
+         */
+        const val BORDERLESS_IMAGE_BLOCK_TITLE: String = "imagePath"
+
+        /**
+         * The section title block title argument.
+         */
+        const val SECTION_TITLE_BLOCK_TITLE: String = "title"
+
+        /**
+         * The text block text argument.
+         */
+        const val TEXT_BLOCK_TEXT: String = "text"
+
+    }
 
     /**
-     * The Big Header block margin bottom.
+     * The Pindex blocks types.
      */
-    const val BLOCK_BIG_HEADER_MARGIN_BOTTOM: Int = 50
+    object BlocksTypes {
 
-    /**
-     * The Borderless Image block height value (in px).
-     */
-    const val BLOCK_BORDERLESS_IMAGE_HEIGHT: Int = 250
+        /**
+         * Audio block.
+         */
+        const val AUDIO: String = "audio"
 
-    /**
-     * The Borderless Image block margin bottom.
-     */
-    const val BLOCK_BORDERLESS_IMAGE_MARGIN_BOTTOM: Int = 50
+        /**
+         * Big Header block.
+         */
+        const val BIG_HEADER: String = "bigHeader"
 
-    /**
-     * The Section Title block margin bottom.
-     */
-    const val BLOCK_SECTION_TITLE_MARGIN_BOTTOM: Int = 15
+        /**
+         * Borderless Image block.
+         */
+        const val BORDERLESS_IMAGE: String = "borderlessImage"
 
-    /**
-     * The Text block margin bottom.
-     */
-    const val BLOCK_TEXT_MARGIN_BOTTOM: Int = 50
+        /**
+         * Text block.
+         */
+        const val TEXT: String = "text"
+
+    }
 
     /**
      * The experiences collection name in Firestore.

@@ -41,6 +41,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            unitTests.returnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -51,12 +57,20 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // For unit tests (test)
+    testImplementation 'junit:junit:4.12'
+    // For UI tests (androidTest)
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
-    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2' // for ActivityScenarioRule
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // For ActivityScenarioRule
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2'
+    // For Fragments
+    implementation ("androidx.fragment:fragment-testing:1.2.5", {
+        exclude group: 'androidx.test', module: 'core'
+    })
+    // Data Faker
+    implementation 'io.github.serpro69:kotlin-faker:1.4.1'
 
     // To avoid compilation errors due to the DEX limitations
     implementation 'com.android.support:multidex:1.0.3'
