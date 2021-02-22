@@ -1,7 +1,5 @@
 package com.pindex.main.utils
 
-import android.content.Context
-import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase

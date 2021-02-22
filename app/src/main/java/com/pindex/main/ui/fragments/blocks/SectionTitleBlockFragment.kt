@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import com.pindex.main.R
+import com.pindex.main.utils.Constants
 
 /**
  * Custom Fragment for the Section Title block.
@@ -19,7 +20,7 @@ class SectionTitleBlockFragment : Fragment(R.layout.fragment_pindex_block_sectio
         textView = view.findViewById(R.id.pindex_block_section_title)
 
         // Set the text
-        textView.text = arguments?.getString("title")
+        textView.text = arguments?.getString(Constants.BlockFragmentArguments.SECTION_TITLE_BLOCK_TITLE )
     }
 
 }

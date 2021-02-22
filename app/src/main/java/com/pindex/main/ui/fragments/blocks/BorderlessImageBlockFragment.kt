@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.pindex.main.R
+import com.pindex.main.utils.Constants
 import com.pindex.main.utils.MediaLoader
 
 /**
@@ -20,7 +21,7 @@ class BorderlessImageBlockFragment : Fragment(R.layout.fragment_pindex_block_bor
         imageView = view.findViewById(R.id.pindex_block_borderless_image)
 
         // Load the image from Firebase
-        val imagePath = arguments?.getString("imagePath")
+        val imagePath = arguments?.getString(Constants.BlockFragmentArguments.BORDERLESS_IMAGE_BLOCK_TITLE)
         imagePath?.let {
             MediaLoader.loadImageFromFirebase(imagePath, imageView)
         }

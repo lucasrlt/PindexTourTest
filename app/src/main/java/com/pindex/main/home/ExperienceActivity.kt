@@ -44,7 +44,7 @@ class ExperienceActivity : AppCompatActivity() {
         // Create and add a Section Title when the block has a sectionTitle property
         if (block.sectionTitle != null) {
             var sectionTitleBlock = SectionTitleBlockFragment()
-            sectionTitleBlock.arguments = bundleOf("title" to block.sectionTitle)
+            sectionTitleBlock.arguments = bundleOf(Constants.BlockFragmentArguments.SECTION_TITLE_BLOCK_TITLE to block.sectionTitle)
 
             // Add the Section Title fragment to the root layout
             supportFragmentManager.beginTransaction()
@@ -59,22 +59,22 @@ class ExperienceActivity : AppCompatActivity() {
             "audio" -> {
                 fragment = AudioBlockFragment()
                 fragment.arguments = bundleOf(
-                        "audioPath" to block.audio?.audioPath,
-                        "imagePath" to block.audio?.imagePath,
-                        "name" to block.audio?.name,
+                        Constants.BlockFragmentArguments.AUDIO_BLOCK_AUDIO_PATH to block.audio?.audioPath,
+                        Constants.BlockFragmentArguments.AUDIO_BLOCK_IMAGE_PATH to block.audio?.imagePath,
+                        Constants.BlockFragmentArguments.AUDIO_BLOCK_NAME to block.audio?.name,
                 )
             }
             "bigHeader" -> {
                 fragment = BigHeaderBlockFragment()
-                fragment.arguments = bundleOf("title" to block.text?.text)
+                fragment.arguments = bundleOf(Constants.BlockFragmentArguments.BIG_HEADER_BLOCK_TITLE to block.text?.text)
             }
             "borderlessImage" -> {
                 fragment = BorderlessImageBlockFragment()
-                fragment.arguments = bundleOf("imagePath" to block.image?.imagePath)
+                fragment.arguments = bundleOf(Constants.BlockFragmentArguments.BORDERLESS_IMAGE_BLOCK_TITLE to block.image?.imagePath)
             }
             "text" -> {
                 fragment = TextBlockFragment()
-                fragment.arguments = bundleOf("text" to block.text?.text)
+                fragment.arguments = bundleOf(Constants.BlockFragmentArguments.TEXT_BLOCK_TEXT to block.text?.text)
             }
         }
 

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.pindex.main.R
+import com.pindex.main.utils.Constants
 import com.pindex.main.utils.MediaLoader
 
 /**
@@ -31,12 +32,12 @@ class AudioBlockFragment : Fragment(R.layout.fragment_pindex_block_audio) {
         buttonView = view.findViewById(R.id.pindex_block_audio_button)
 
         // Set the background image
-        val imagePath = arguments?.getString("imagePath")
+        val imagePath = arguments?.getString(Constants.BlockFragmentArguments.AUDIO_BLOCK_IMAGE_PATH)
         imagePath?.let {
             MediaLoader.loadImageFromFirebase(imagePath, imageView)
         }
         // Set the audio text
-        val audioName = arguments?.getString("name")
+        val audioName = arguments?.getString(Constants.BlockFragmentArguments.AUDIO_BLOCK_NAME)
         setAudioText(audioName)
 
         // Set the button on click event
@@ -73,7 +74,7 @@ class AudioBlockFragment : Fragment(R.layout.fragment_pindex_block_audio) {
                     )
 
                     // Audio file URL
-                    setDataSource(arguments?.getString("audioPath"))
+                    setDataSource(arguments?.getString(Constants.BlockFragmentArguments.AUDIO_BLOCK_AUDIO_PATH))
 
                     // To avoid blocking the UI: MediaPlayer.OnPreparedListener is called when ready
                     prepareAsync()

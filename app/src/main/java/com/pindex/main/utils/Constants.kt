@@ -11,6 +11,48 @@ object Constants {
     const val ACTIVITY_EXPERIENCE_EXTRA_NAME: String = "EXTRA_EXPERIENCE"
 
     /**
+     * The Pindex blocks fragments arguments names to pass data.
+     */
+    object BlockFragmentArguments {
+
+        /**
+         * The audio block audio path argument.
+         */
+        const val AUDIO_BLOCK_AUDIO_PATH: String = "audioPath"
+
+        /**
+         * The audio block image path argument.
+         */
+        const val AUDIO_BLOCK_IMAGE_PATH: String = "imagePath"
+
+        /**
+         * The audio block name argument.
+         */
+        const val AUDIO_BLOCK_NAME: String = "name"
+
+        /**
+         * The big header block title argument.
+         */
+        const val BIG_HEADER_BLOCK_TITLE: String = "title"
+
+        /**
+         * The borderless image block image path argument.
+         */
+        const val BORDERLESS_IMAGE_BLOCK_TITLE: String = "imagePath"
+
+        /**
+         * The section title block title argument.
+         */
+        const val SECTION_TITLE_BLOCK_TITLE: String = "title"
+
+        /**
+         * The text block text argument.
+         */
+        const val TEXT_BLOCK_TEXT: String = "text"
+
+    }
+
+    /**
      * The experiences collection name in Firestore.
      */
     const val FIRESTORE_EXPERIENCES_COLLECTION: String = "activities"
