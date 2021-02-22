@@ -69,6 +69,8 @@ dependencies {
     implementation ("androidx.fragment:fragment-testing:1.2.5", {
         exclude group: 'androidx.test', module: 'core'
     })
+    // Data Faker
+    implementation 'io.github.serpro69:kotlin-faker:1.4.1'
 
     // To avoid compilation errors due to the DEX limitations
     implementation 'com.android.support:multidex:1.0.3'

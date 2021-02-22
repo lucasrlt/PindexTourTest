@@ -16,6 +16,7 @@ import com.pindex.main.models.blocks.AudioBlockDto
 import com.pindex.main.models.blocks.ImageBlockDto
 import com.pindex.main.models.blocks.TextBlockDto
 import com.pindex.main.utils.Constants
+import io.github.serpro69.kfaker.Faker
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,6 +45,11 @@ class ExperienceActivityInstrumentedTest {
      * Experience Pindex blocks (for a single test at once)
      */
     private var blocksList: ArrayList<BlockDto> = ArrayList()
+
+    /**
+     * Data Faker
+     */
+    private val faker = Faker()
 
     @After
     fun tearDown() {
@@ -133,7 +139,7 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithAudioBlockDisplaysIt() {
-        val name = "Insomnia - KAS:ST"
+        val name = faker.name.name()
         addAudioBlock(name = name)
 
         startActivityWithBlocksList()
@@ -150,8 +156,8 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithAudioBlockAndSectionTitleDisplaysThem() {
-        val sectionTitle = "Sur SoundCloud"
-        val name = "My Dirty Pleasure #1"
+        val sectionTitle = faker.name.name()
+        val name = faker.name.name()
         addAudioBlock(name = name, sectionTitle = sectionTitle)
 
         startActivityWithBlocksList()
@@ -172,7 +178,7 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithBigHeaderBlockDisplaysIt() {
-        val title = "London isn't England"
+        val title = faker.name.name()
         addBigHeaderBlock(title)
 
         startActivityWithBlocksList()
@@ -201,7 +207,7 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithBorderlessImageBlockAndSectionTitleDisplaysThem() {
-        val sectionTitle = "La petite grenouille verte"
+        val sectionTitle = faker.name.name()
         addBorderlessImageBlock(sectionTitle)
 
         startActivityWithBlocksList()
@@ -218,7 +224,7 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithTextBlockDisplaysIt() {
-        val text = "En fait, c'est pas si terrible que ça le testing Android..."
+        val text = faker.name.name()
         addTextBlock(text)
 
         startActivityWithBlocksList()
@@ -235,8 +241,8 @@ class ExperienceActivityInstrumentedTest {
     */
     @Test
     fun launchingExperienceActivityWithTextBlockAndSectionTitleDisplaysThem() {
-        val sectionTitle = "Petite blague"
-        val text = "Non je déconne hein !"
+        val sectionTitle = faker.name.name()
+        val text = faker.name.name()
         addTextBlock(text, sectionTitle)
 
         startActivityWithBlocksList()
@@ -257,9 +263,9 @@ class ExperienceActivityInstrumentedTest {
      */
     @Test
     fun launchingExperienceActivityWithMultipleBlocksDisplaysThem() {
-        val audioName = "Audio Block"
-        val bigHeaderTitle = "Big Header"
-        val text = "Text Block"
+        val audioName = faker.name.name()
+        val bigHeaderTitle = faker.name.name()
+        val text = faker.name.name()
 
         addAudioBlock(audioName)
         addBigHeaderBlock(bigHeaderTitle)
