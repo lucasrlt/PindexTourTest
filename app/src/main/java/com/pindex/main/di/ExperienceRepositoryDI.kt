@@ -12,14 +12,13 @@ import dagger.hilt.android.scopes.ViewModelScoped
  * This class is used by Hilt in order to instantiate
  * an ExperienceRepository interface.
  */
-@InstallIn(ViewModelComponent::class)
 @Module
+@InstallIn(ViewModelComponent::class)
 class ExperienceRepositoryDI {
 
-    @ViewModelScoped
     @Provides
+    @ViewModelScoped
     fun provideExperienceRepositoryInterface(): ExperienceRepository {
-        //return FirebaseMockExperienceRepository()
         return FirebaseExperienceRepository()
     }
 
