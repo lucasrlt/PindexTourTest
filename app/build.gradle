@@ -105,11 +105,13 @@ dependencies {
     * Test
     */
     // Unit test
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'junit:junit:4.13'
     // For UI tests (androidTest)
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.0'
     // ActivityScenarioRule
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2'
     // Fragments

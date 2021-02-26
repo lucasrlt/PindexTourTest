@@ -52,11 +52,16 @@ class HomeActivityInstrumentedTest {
     }
 
     /**
-     * Test that the Home Activity displays the experiences list fragment.
+     * Test that the Home Activity displays the experiences list fragment
+     * and the RecyclerView.
      */
     @Test
-    fun launchingHomeActivityDisplaysExperiencesListFragment() {
+    fun launchingHomeActivityDisplaysExperiencesListFragmentAndRecyclerView() {
+        // Experiences list Fragment
         onView(withId(R.id.fragment_experiences_list)).check(matches(isDisplayed()))
+
+        // Experiences list RecyclerView
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
     }
 
 }
