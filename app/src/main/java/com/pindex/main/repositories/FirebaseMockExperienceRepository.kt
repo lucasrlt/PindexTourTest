@@ -15,15 +15,8 @@ class FirebaseMockExperienceRepository : ExperienceRepository {
     private val faker = Faker()
 
     override suspend fun getPage(limit: Long): List<ExperienceDto> {
-        val experiencesList = ArrayList<ExperienceDto>()
-
-        // Create [limit] experiences and add them to the list
-        for (i in 1..limit) {
-            val experience = createRandomExperience()
-            experiencesList.add(experience)
-        }
-
-        return experiencesList
+        // Create [limit] experiences and return them in an array
+        return Array(limit.toInt()) { createRandomExperience() }.toCollection(ArrayList())
     }
 
     /**
@@ -31,14 +24,15 @@ class FirebaseMockExperienceRepository : ExperienceRepository {
      * and title are random strings.
      */
     private fun createRandomExperience(): ExperienceDto {
-        val contentList = ArrayList<ContentDto>()
-        val content = ContentDto(
-                shortDescription = faker.name.name(),
-                title = faker.name.name(),
+        return ExperienceDto(
+                content = arrayListOf(
+                    ContentDto(
+                            shortDescription = faker.name.name(),
+                            title = faker.name.name()
+                    )
+                ),
+                type = "activity",
         )
-        contentList.add(content)
-
-        return ExperienceDto(content = contentList, type = "activity")
     }
 
 }

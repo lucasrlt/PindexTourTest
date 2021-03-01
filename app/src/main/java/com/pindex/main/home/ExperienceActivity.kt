@@ -11,7 +11,6 @@ import com.pindex.main.models.ExperienceDto
 import com.pindex.main.ui.fragments.blocks.*
 import com.pindex.main.utils.Constants
 
-//@AndroidEntryPoint
 class ExperienceActivity : AppCompatActivity() {
 
     // Activity root layout that contains the experience content

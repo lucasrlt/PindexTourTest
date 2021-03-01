@@ -2,6 +2,7 @@ package com.pindex.main.repositories
 
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.pindex.main.auth.PindexFirebase
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.utils.Constants
 import kotlinx.coroutines.tasks.await
@@ -16,6 +17,11 @@ class FirebaseExperienceRepository : ExperienceRepository {
 
     // Last experience used to fetch the next chunk of data
     private var lastDocumentSnapshot: DocumentSnapshot? = null
+
+    init {
+        // Anonymously log in the user to Firebase
+        PindexFirebase.signInAnonymously()
+    }
 
     override suspend fun getPage(limit: Long): List<ExperienceDto> {
         var query = firestore.collection(Constants.FIRESTORE_EXPERIENCES_COLLECTION)
