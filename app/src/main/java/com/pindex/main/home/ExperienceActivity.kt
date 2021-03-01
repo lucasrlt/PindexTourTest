@@ -10,6 +10,7 @@ import com.pindex.main.models.BlockDto
 import com.pindex.main.models.ExperienceDto
 import com.pindex.main.ui.fragments.blocks.*
 import com.pindex.main.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
 class ExperienceActivity : AppCompatActivity() {
 
