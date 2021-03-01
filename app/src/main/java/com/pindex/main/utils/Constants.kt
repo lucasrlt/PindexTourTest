@@ -80,17 +80,8 @@ object Constants {
     }
 
     /**
-     * The experiences collection name in Firestore.
+     * Number of experiences to fetch per request.
      */
-    const val FIRESTORE_EXPERIENCES_COLLECTION: String = "activities"
+    const val EXPERIENCES_REPOSITORY_PAGE_SIZE: Long = 10
 
-    /**
-     * Firestore page size value (ViewModel).
-     */
-    const val FIRESTORE_PAGE_SIZE: Int = 10
-
-    /**
-     * The number of documents to fetch per request from Firestore.
-     */
-    const val FIRESTORE_QUERY_LIMIT: Long = 10
 }

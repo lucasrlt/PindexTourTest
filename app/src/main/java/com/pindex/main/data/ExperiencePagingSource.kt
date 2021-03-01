@@ -14,10 +14,10 @@ class ExperiencePagingSource(private val service: ExperienceService) : PagingSou
     override suspend fun load(params: LoadParams<List<ExperienceDto>>): LoadResult<List<ExperienceDto>, ExperienceDto> {
         return try {
             // If no key is passed, get the first chunk of data
-            val currentPage = params.key ?: service.getPage(Constants.FIRESTORE_QUERY_LIMIT)
+            val currentPage = params.key ?: service.getPage(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE)
 
             // Next chunk of data
-            val nextPage = service.getPage(Constants.FIRESTORE_QUERY_LIMIT)
+            val nextPage = service.getPage(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE)
 
             LoadResult.Page(
                 data = currentPage,

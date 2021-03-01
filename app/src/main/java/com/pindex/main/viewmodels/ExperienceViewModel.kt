@@ -21,7 +21,7 @@ class ExperienceViewModel @Inject constructor(
     private val repository: ExperienceRepository
 ) : ViewModel() {
 
-    val flow = Pager(PagingConfig(Constants.FIRESTORE_PAGE_SIZE)) {
+    val flow = Pager(PagingConfig(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE.toInt())) {
         ExperiencePagingSource(ExperienceService(repository))
     }.flow.cachedIn(viewModelScope)
 
