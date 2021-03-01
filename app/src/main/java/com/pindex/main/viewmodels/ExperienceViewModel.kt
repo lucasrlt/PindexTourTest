@@ -15,7 +15,7 @@ import com.pindex.main.utils.Constants
  */
 class ExperienceViewModel : ViewModel() {
 
-    val flow = Pager(PagingConfig(Constants.FIRESTORE_PAGE_SIZE)) {
+    val flow = Pager(PagingConfig(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE.toInt())) {
         ExperiencePagingSource(ExperienceService(FirebaseExperienceRepository()))
     }.flow.cachedIn(viewModelScope)
 
