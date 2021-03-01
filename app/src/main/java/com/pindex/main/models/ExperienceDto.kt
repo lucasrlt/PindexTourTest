@@ -1,9 +1,8 @@
 package com.pindex.main.models
 
-import com.google.firebase.Timestamp
 import android.os.Parcelable
+import com.google.firebase.Timestamp
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
 
 /**
  * An experience can either be a Pindex Tour or a Pindex Activity/Event.

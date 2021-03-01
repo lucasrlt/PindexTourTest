@@ -1,40 +1,26 @@
 package com.pindex.main.data
 
 import androidx.paging.PagingSource
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import com.pindex.main.models.ExperienceDto
+import com.pindex.main.services.ExperienceService
 import com.pindex.main.utils.Constants
-import kotlinx.coroutines.tasks.await
 
 /**
- * Fetch the experiences from Firestore by chunk.
+ * Paging Source for the Pindex experiences. This class needs an
+ * ExperienceService in order to get the paginated data.
  */
-class ExperiencePagingSource(
-    private val db: FirebaseFirestore
-) : PagingSource<QuerySnapshot, ExperienceDto>() {
+class ExperiencePagingSource(private val service: ExperienceService) : PagingSource<List<ExperienceDto>, ExperienceDto>() {
 
-    override suspend fun load(params: LoadParams<QuerySnapshot>): LoadResult<QuerySnapshot, ExperienceDto> {
+    override suspend fun load(params: LoadParams<List<ExperienceDto>>): LoadResult<List<ExperienceDto>, ExperienceDto> {
         return try {
-            // Current chunk of experiences to fetch
-            val currentPage = params.key ?: db.collection(Constants.FIRESTORE_EXPERIENCES_COLLECTION)
-                    .whereEqualTo("status", "listed")
-                    .limit(Constants.FIRESTORE_QUERY_LIMIT)
-                    .get()
-                    .await()
+            // If no key is passed, get the first chunk of data
+            val currentPage = params.key ?: service.getPage(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE)
 
-            val lastDocumentSnapshot = currentPage.documents[currentPage.size() - 1]
-
-            // Next chunk of experiences to fetch
-            val nextPage = db.collection(Constants.FIRESTORE_EXPERIENCES_COLLECTION)
-                    .whereEqualTo("status", "listed")
-                    .limit(Constants.FIRESTORE_QUERY_LIMIT)
-                    .startAfter(lastDocumentSnapshot)
-                    .get()
-                    .await()
+            // Next chunk of data
+            val nextPage = service.getPage(Constants.EXPERIENCES_REPOSITORY_PAGE_SIZE)
 
             LoadResult.Page(
-                data = currentPage.toObjects(ExperienceDto::class.java),
+                data = currentPage,
                 prevKey = null,
                 nextKey = nextPage
             )
