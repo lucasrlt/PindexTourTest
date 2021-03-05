@@ -7,7 +7,7 @@ import com.pindex.main.repositories.ExperienceRepository
  * Experience Service for the Pindex experiences. This class needs
  * a repository in order to get the paginated data.
  */
-class ExperienceService(private val repository: ExperienceRepository) {
+class ExperienceService (private val repository: ExperienceRepository) {
 
     /**
      * Use the repository to get the next chunk of data, limited by the

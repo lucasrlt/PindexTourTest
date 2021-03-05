@@ -12,9 +12,11 @@ import com.pindex.main.adapters.ExperienceAdapter
 import com.pindex.main.home.ExperienceActivity
 import com.pindex.main.utils.Constants
 import com.pindex.main.viewmodels.ExperienceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ExperienceFragment : Fragment(R.layout.fragment_experiences_list) {
 
     private lateinit var rvActivity: RecyclerView

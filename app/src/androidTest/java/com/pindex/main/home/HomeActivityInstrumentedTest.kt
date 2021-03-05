@@ -4,27 +4,64 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.pindex.main.R
-import com.pindex.main.home.HomeActivity
 import androidx.test.ext.junit.rules.activityScenarioRule
-
-import org.junit.Test
-import org.junit.runner.RunWith
+import com.pindex.main.R
+import com.pindex.main.di.ExperienceRepositoryDI
+import com.pindex.main.repositories.ExperienceRepository
+import com.pindex.main.repositories.FirebaseMockExperienceRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.UninstallModules
+import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
-@RunWith(AndroidJUnit4::class)
+@UninstallModules(ExperienceRepositoryDI::class)
+@HiltAndroidTest
 class HomeActivityInstrumentedTest {
 
-    @get:Rule
+    @get:Rule(order = 0)
+    var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 1)
     val activityScenarioRule = activityScenarioRule<HomeActivity>()
 
+    @Before
+    fun init() {
+        hiltRule.inject()
+    }
+
     /**
-     * Test that the Home Activity displays the experiences list fragment.
+     * Use the FirebaseMockExperienceRepository for testing.
+     */
+    @Module
+    @InstallIn(ViewModelComponent::class)
+    object TestExperienceRepositoryDI {
+
+        @Provides
+        @ViewModelScoped
+        fun provideExperienceRepositoryInterface(): ExperienceRepository {
+            return FirebaseMockExperienceRepository()
+        }
+
+    }
+
+    /**
+     * Test that the Home Activity displays the experiences list fragment
+     * and the RecyclerView.
      */
     @Test
-    fun launchingHomeActivityDisplaysExperiencesListFragment() {
+    fun launchingHomeActivityDisplaysExperiencesListFragmentAndRecyclerView() {
+        // Experiences list Fragment
         onView(withId(R.id.fragment_experiences_list)).check(matches(isDisplayed()))
+
+        // Experiences list RecyclerView
+        onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
     }
 
 }
