@@ -1,6 +1,6 @@
 package com.pindex.main.ui.fragments
 
-import androidx.appcompat.widget.AppCompatTextView
+import      androidx.appcompat.widget.AppCompatTextView
 import com.pindex.main.R
 import com.pindex.main.ui.fragments.blocks.BigHeaderBlockFragment
 import junit.framework.TestCase.assertEquals
